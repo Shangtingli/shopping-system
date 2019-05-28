@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +31,13 @@ public class ProductController {
     @Autowired
     private ProductService productService;
     
+    @GetMapping(value="/admin")
+    @ResponseBody
+    public String adminHome()
+    {
+    	return "Hello World I am in admin";
+    }
+    
     @RequestMapping(value = "/getAllProducts",method = RequestMethod.GET)
     public ModelAndView getAllProducts() {
    	 List<Product> products = productService.getAllProducts();
@@ -44,9 +52,8 @@ public class ProductController {
 
     @RequestMapping(value = "/admin/delete/{productId}",  method = RequestMethod.GET)
     public String deleteProduct(@PathVariable(value = "productId") int productId) {
-   	 // for MAC : Path path = Paths.get("/Users/xxx/products/" + productId + ".jpg");
-            // For windows
-	Path path = Paths.get("C:\\products\\" + productId + ".jpg");
+   	Path path = Paths.get("/Users/xxx/products/" + productId + ".jpg");
+//Windows Path: Path path = Paths.get("C:\\products\\" + productId + ".jpg");
 
 
    	 if (Files.exists(path)) {
@@ -63,6 +70,7 @@ public class ProductController {
 
 	@RequestMapping(value = "/admin/product/addProduct", method = RequestMethod.GET) 
 	public ModelAndView getProductForm() {
+		System.out.println("Get Product Form;");
 		return new ModelAndView("addProduct", "productForm", new Product());
 	}
 

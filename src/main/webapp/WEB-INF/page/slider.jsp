@@ -3,6 +3,37 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+
+<!-- <script type="text/javascript">
+	window.onload = function() {
+		var bigImg = document.createElement("img");
+		bigImg.src = getImgSource();
+		bigImg.width = "200";
+		bigImg.style = "margin-top:100px;";
+		var myDiv = document.getElementById('imgDiv');
+		myDiv.appendChild(bigImg);
+	};
+
+	function getImgSource() {
+   	 var xhttp = new XMLHttpRequest();
+   	 var url = "http://localhost:8080/AdsSystem/Ad";
+   	 xhttp.open("GET", url, false);
+   	 xhttp.send();
+   	 var response = xhttp.responseText;
+   	 var obj = JSON.parse(response);
+   	 console.log(obj.image_url);
+   	 return obj[0].image_url
+    }
+</script>
+    <style>
+        .left,
+        .container {
+            padding: 10px;
+            display: table-cell;
+            border: 0px solid #f40;
+        }
+    </style> -->
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet"

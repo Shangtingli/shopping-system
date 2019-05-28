@@ -27,7 +27,6 @@ public class CartController {
     public ModelAndView getCartId(){
    	 Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
    	 String username = loggedInUser.getName();
-   	 System.out.println("May be the problem");
    	 Customer customer = customerService.getCustomerByUserName(username);
    	 ModelAndView modelAndView = new ModelAndView("cart");
    	 modelAndView.addObject("cartId", customer.getCart().getId());

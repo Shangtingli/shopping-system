@@ -19,7 +19,6 @@ public class ApplicationConfig {
 
 	@Bean(name = "sessionFactory")
 	public LocalSessionFactoryBean sessionFactory() {
-		System.out.println("sessionFactory");
 		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
 		sessionFactory.setDataSource(dataSource());
 		sessionFactory.setPackagesToScan("onlineShop.model");
@@ -29,10 +28,9 @@ public class ApplicationConfig {
 
 	@Bean(name = "dataSource")
 	public DataSource dataSource() {
-		System.out.println("dataSource");
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/ecommerce?serverTimezone=UTC");
+		dataSource.setUrl("jdbc:mysql://localhost:8889/ecommerce");
 		dataSource.setUsername("root");
 		dataSource.setPassword("root");
 
@@ -42,7 +40,6 @@ public class ApplicationConfig {
 	 // Handler for multipart form data
     @Bean
     public MultipartResolver multipartResolver() {
-     System.out.println("MultipartResolver");
    	 CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
    	 multipartResolver.setMaxUploadSize(10240000);
    	 return multipartResolver;
@@ -51,7 +48,6 @@ public class ApplicationConfig {
     // Properly encode URL encoding for special characters.
     @Bean
     public HttpFirewall allowUrlEncodedSlashHttpFirewall() {
-    	System.out.println("Firewall");
     	StrictHttpFirewall firewall = new StrictHttpFirewall();
     	firewall.setAllowUrlEncodedSlash(true);
     	firewall.setAllowSemicolon(true);
@@ -59,7 +55,6 @@ public class ApplicationConfig {
     }
 
 	private final Properties hibernateProperties() {
-		System.out.println("Hibernate");
 		Properties hibernateProperties = new Properties();
 		hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
 		hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
