@@ -108,7 +108,6 @@ html, body {
 	bottom: 0;
 	height: 31px;
 	left: 0;
-	position: absolute;
 	right: 0;
 }
 /* If you don't want the footer to be responsive, remove these media queries */

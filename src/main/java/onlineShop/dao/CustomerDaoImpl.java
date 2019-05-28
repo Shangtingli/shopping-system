@@ -46,6 +46,7 @@ public class CustomerDaoImpl implements CustomerDao {
 
     public Customer getCustomerByUserName(String userName) {
    	 Session session = null;
+   	 System.out.println("UserName is : " + userName);
    	 User user = null;
    	 try {
    		 session = sessionFactory.openSession();

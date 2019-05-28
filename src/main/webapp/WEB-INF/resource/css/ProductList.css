@@ -1,7 +1,9 @@
 @CHARSET "ISO-8859-1";
 #productList{
 	background-color: rgba(241,241,241);
+	height: 100%;
 }
-#productable{
-	
+#producTable{
+	height: 750px;
 }
+

@@ -14,6 +14,7 @@ public class HomePageController {
     public String returnHomePage() {
    	 return "index";
     }
+   
     
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView login(@RequestParam(value = "error", required = false) String error,

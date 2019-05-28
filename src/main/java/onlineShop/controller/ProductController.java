@@ -2,6 +2,7 @@ package onlineShop.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -9,6 +10,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -76,16 +78,17 @@ public class ProductController {
 
 
     @RequestMapping(value = "/admin/product/addProduct", method = RequestMethod.POST)
-    public String addProduct(@Valid @ModelAttribute(value = "productForm") Product product, BindingResult result) {
+    public String addProduct(@Valid @ModelAttribute(value = "productForm") Product product, BindingResult result) throws IOException {
 
    	 if (result.hasErrors()) {
    		 return "addProduct";
    	 }
    	 productService.addProduct(product);
    	 MultipartFile image = product.getProductImage();
+   	
    	 if (image != null && !image.isEmpty()) {
-   		 Path path = Paths.get("/Users/xxx/products/" + product.getId() + ".jpg");
-	     //Path path = Paths.get("C:\\products\\" + product.getId() + ".jpg");
+   		 //TODO: Probably Needs to Store the image on server side
+   		 Path path = Paths.get("/Users/shangtingli/Desktop/PROJECT/onlineShop/target/onlineShop/WEB-INF/resource/images/" + image.getOriginalFilename() + ".jpg");
 
 
    		 try {
