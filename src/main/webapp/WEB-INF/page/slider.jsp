@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
-<!-- <script type="text/javascript">
+<script type="text/javascript">
 	window.onload = function() {
 		var bigImg = document.createElement("img");
 		bigImg.src = getImgSource();
@@ -32,7 +32,7 @@
             display: table-cell;
             border: 0px solid #f40;
         }
-    </style> -->
+    </style>
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -46,6 +46,7 @@
 <body>
 	<!-- Slider -->
 	<div class="jumbotron">
+	<div id="imgDiv" class = "left"></div>
 		<div class="container">
 			<br>
 			<div id="myCarousel" class="carousel slide" data-ride="carousel">
