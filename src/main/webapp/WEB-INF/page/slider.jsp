@@ -37,11 +37,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet"
-	href="<c:url value="/resource/bootstrap/css/bootstrap.min.css"/>">
-<script src="<c:url value="/resource/js/jquery.js"/>"></script>
-<script src="<c:url value="/resource/bootstrap/js/bootstrap.min.js"/>"></script>
+	href="<c:url value="/bootstrap/css/bootstrap.min.css"/>">
+<script src="<c:url value="/js/jquery.js"/>"></script>
+<script src="<c:url value="/bootstrap/js/bootstrap.min.js"/>"></script>
 <link rel="stylesheet" type="text/css"
-	href="<c:url value="/resource/css/overall.css"/>">
+	href="<c:url value="/css/overall.css"/>">
 </head>
 <body>
 	<!-- Slider -->
@@ -62,23 +62,23 @@
 				<!-- Wrapper for slides -->
 				<div class="carousel-inner" role="listbox">
 					<div class="item active">
-						<img src="<c:url value="/resource/images/pixel.jpg"/>" style="width:100%;" alt="Image1">
+						<img src="<c:url value="/images/pixel.jpg"/>" style="width:100%;" alt="Image1">
 					</div>
 
 					<div class="item">
-						<img src="<c:url value="/resource/images/iphone.jpg"/>" style="width:100%;" alt="Image2" >
+						<img src="<c:url value="/images/iphone.jpg"/>" style="width:100%;" alt="Image2" >
 					</div>
 
 					<div class="item">
-						<img src="<c:url value="/resource/images/oppo2.jpg"/>" style="width:100%;" alt="Image3">
+						<img src="<c:url value="/images/oppo2.jpg"/>" style="width:100%;" alt="Image3">
 					</div>
 
 					<div class="item">
-						<img src="<c:url value="/resource/images/samsung.jpg"/>" style="width:100%;" alt="Image4">
+						<img src="<c:url value="/images/samsung.jpg"/>" style="width:100%;" alt="Image4">
 					</div>
 
 					<div class="item">
-						<img src="<c:url value="/resource/images/buy.jpg"/>" style="width:100%;" alt="Image5">
+						<img src="<c:url value="/images/buy.jpg"/>" style="width:100%;" alt="Image5">
 					</div>
 				</div>
 

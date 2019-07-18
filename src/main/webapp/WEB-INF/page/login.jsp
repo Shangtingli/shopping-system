@@ -6,11 +6,11 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>Login</title>
-    <link rel="icon" type="image/x-icon" href="<c:url value="/resource/images/favicon.png"/>"/>
-    <link rel="stylesheet" href="/resource/bootstrap/css/bootstrap.min.css">
-    <script src="/resource/js/jquery.js"></script>
-    <script src="/resource/bootstrap/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="/resource/css/header.css">
+    <link rel="icon" type="image/x-icon" href="<c:url value="/images/favicon.png"/>"/>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <script src="/js/jquery.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/header.css">
     <style type="text/css">
         @media ( min-width: 1200px) .container {
             width: 1300px;

@@ -11,13 +11,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Product Management</title>
-<link rel="icon" type="image/x-icon" href="<c:url value="/resource/images/favicon.png"/>" />
-<link rel="stylesheet" href="<c:url value="/resource/bootstrap/css/bootstrap.min.css"/>">
-<script src="<c:url value="/resource/js/jquery.js"/>"></script>
-<script src="<c:url value="/resource/bootstrap/js/bootstrap.min.js"/>"></script>
-<link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/ProductList.css"/>">
+<link rel="icon" type="image/x-icon" href="<c:url value="/images/favicon.png"/>" />
+<link rel="stylesheet" href="<c:url value="/bootstrap/css/bootstrap.min.css"/>">
+<script src="<c:url value="/js/jquery.js"/>"></script>
+<script src="<c:url value="/bootstrap/js/bootstrap.min.js"/>"></script>
+<link rel="stylesheet" type="text/css" href="<c:url value="/css/ProductList.css"/>">
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<script src="<c:url value="/resource/js/productController.js"/>"></script>
+<script src="<c:url value="/js/productController.js"/>"></script>
 </head>
 <body ng-app="myapp">
 	<div class="container" id="productTable"
