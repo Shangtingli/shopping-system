@@ -1,40 +1,33 @@
-package com.springboot.project.onlineShop.model.Cart;
+package com.springboot.project.onlineShop.model;
 
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.springboot.project.onlineShop.model.CartItem.CartItem;
-import com.springboot.project.onlineShop.model.Customer.Customer;
 
+
+//TODO: Figure out why the cart does not contain information about customers
 @Entity
 @Table(name = "cart")
 public class Cart implements Serializable {
 
-    private static final long serialVersionUID = 8436097833452420298L;
+//    private static final String serialVersionUID = 8436097833452420298L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     private Long id;
 
     @OneToOne(mappedBy = "cart")
-    @JsonIgnore
     private Customer customer;
 
     @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL,fetch=FetchType.EAGER)
-    private List<CartItem> cartItem;
+    private List<CartItem> cart_item;
 
-    private double totalPrice;
+    @Column(name="total_price")
+    private double total_price;
 
     public Long getId() {
         return id;
@@ -45,19 +38,19 @@ public class Cart implements Serializable {
     }
 
     public List<CartItem> getCartItem() {
-        return cartItem;
+        return cart_item;
     }
 
     public void setCartItem(List<CartItem> cartItem) {
-        this.cartItem = cartItem;
+        this.cart_item = cartItem;
     }
 
     public double getTotalPrice() {
-        return totalPrice;
+        return total_price;
     }
 
     public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
+        this.total_price = totalPrice;
     }
 
     public Customer getCustomer() {

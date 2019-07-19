@@ -1,7 +1,7 @@
 package com.springboot.project.onlineShop.service;
 
-import com.springboot.project.onlineShop.model.Cart.Cart;
-import com.springboot.project.onlineShop.model.Cart.CartRepository;
+import com.springboot.project.onlineShop.model.Cart;
+import com.springboot.project.onlineShop.repository.CartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

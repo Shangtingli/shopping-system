@@ -1,38 +1,35 @@
-package com.springboot.project.onlineShop.model.CartItem;
+package com.springboot.project.onlineShop.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.springboot.project.onlineShop.model.Cart.Cart;
-import com.springboot.project.onlineShop.model.Product.Product;
 
 @Entity
 @Table(name = "cartitem")
 public class CartItem implements Serializable {
 
-    private static final long serialVersionUID = -2455760938054036364L;
+//    private static final String serialVersionUID = -2455760938054036364L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     private Long id;
 
+    @Column(name="quantity")
     private int quantity;
 
+    @Column(name="price")
     private double price;
 
     @OneToOne
+    @JoinColumn(name="product_id")
     private Product product;
 
     @ManyToOne
     @JsonIgnore
+    @JoinColumn(name="cart_id")
     private Cart cart;
 
     public Long getId() {

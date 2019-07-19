@@ -1,7 +1,7 @@
 package com.springboot.project.onlineShop.controller;
-import com.springboot.project.onlineShop.model.Cart.Cart;
-import com.springboot.project.onlineShop.model.Customer.Customer;
-import com.springboot.project.onlineShop.model.SalesOrder.SalesOrder;
+import com.springboot.project.onlineShop.model.Cart;
+import com.springboot.project.onlineShop.model.Customer;
+import com.springboot.project.onlineShop.model.SalesOrder;
 import com.springboot.project.onlineShop.service.CartService;
 import com.springboot.project.onlineShop.service.SalesOrderService;
 import org.springframework.beans.factory.annotation.Autowired;

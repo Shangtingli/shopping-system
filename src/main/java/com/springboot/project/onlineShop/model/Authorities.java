@@ -1,24 +1,34 @@
 package com.springboot.project.onlineShop.model;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+
+//Important: Now the column name of repository follow a specific format:
+// emailId => email_id, shippingAddressId=> shipping_address_id
 
 @Entity
 @Table(name = "authorities")
 public class Authorities implements Serializable {
 
-    private static final long serialVersionUID = 8734140534986494039L;
+
+    public Authorities(){
+
+    }
+    public Authorities(Long id, String emailId, String authorities){
+        this.id = id;
+        this.email_id = emailId;
+        this.authorities = authorities;
+    }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     private Long id;
 
-    private String emailId;
+    @Column(name="email_id")
+    private String email_id;
 
+    @Column(name="authorities")
     private String authorities;
 
     public Long getId() {
@@ -30,11 +40,11 @@ public class Authorities implements Serializable {
     }
 
     public String getEmailId() {
-        return emailId;
+        return email_id;
     }
 
     public void setEmailId(String emailId) {
-        this.emailId = emailId;
+        this.email_id = emailId;
     }
 
     public String getAuthorities() {

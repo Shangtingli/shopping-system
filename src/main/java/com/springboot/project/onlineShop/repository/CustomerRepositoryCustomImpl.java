@@ -1,7 +1,8 @@
-package com.springboot.project.onlineShop.model.Customer;
+package com.springboot.project.onlineShop.repository;
 
+import com.springboot.project.onlineShop.model.Customer;
 import com.springboot.project.onlineShop.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.springboot.project.onlineShop.repository.CustomerRepositoryCustom;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -25,7 +26,7 @@ public class CustomerRepositoryCustomImpl implements CustomerRepositoryCustom {
         Root<User> userRoot = criteriaQuery.from(User.class);
         ParameterExpression<String> emailIdParameter = criteriaBuilder.parameter(String.class);
         criteriaQuery.select(userRoot)
-                .where(criteriaBuilder.equal(userRoot.get("emailId"), emailIdParameter));
+                .where(criteriaBuilder.equal(userRoot.get("email_id"), emailIdParameter));
 
         TypedQuery<User> query = entityManager.createQuery(criteriaQuery);
         query.setParameter(emailIdParameter, userName);

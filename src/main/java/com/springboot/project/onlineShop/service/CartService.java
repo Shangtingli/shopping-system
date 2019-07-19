@@ -1,10 +1,8 @@
 package com.springboot.project.onlineShop.service;
 
-import com.springboot.project.onlineShop.model.Cart.Cart;
-import org.hibernate.Session;
+import com.springboot.project.onlineShop.model.Cart;
 
 import java.io.IOException;
-import java.util.List;
 
 public interface CartService {
     Cart getCartById(Long CartId);

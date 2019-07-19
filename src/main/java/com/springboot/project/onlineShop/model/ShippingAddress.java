@@ -1,32 +1,36 @@
 package com.springboot.project.onlineShop.model;
 
-import com.springboot.project.onlineShop.model.Customer.Customer;
-
 import java.io.Serializable;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "shippingAddress")
+@Table(name = "shipping_address")
 public class ShippingAddress implements Serializable {
 
-    private static final long serialVersionUID = 7551999649936522523L;
+//    private static final String serialVersionUID = 7551999649936522523L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     private Long id;
+
+    @Column(name="address")
     private String address;
+
+    @Column(name="city")
     private String city;
+
+    @Column(name="state")
     private String state;
+
+    @Column(name="zipcode")
     private String zipcode;
+
+    @Column(name="country")
     private String country;
 
-    @OneToOne(mappedBy = "shippingAddress")
+    @OneToOne(mappedBy = "shipping_address")
     private Customer customer;
 
     public Long getId() {

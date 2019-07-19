@@ -1,6 +1,6 @@
 package com.springboot.project.onlineShop.service;
 
-import com.springboot.project.onlineShop.model.Product.Product;
+import com.springboot.project.onlineShop.model.Product;
 
 import java.util.List;
 

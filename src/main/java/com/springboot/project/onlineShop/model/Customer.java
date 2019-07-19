@@ -1,51 +1,50 @@
-package com.springboot.project.onlineShop.model.Customer;
+package com.springboot.project.onlineShop.model;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.springboot.project.onlineShop.model.BillingAddress;
-import com.springboot.project.onlineShop.model.Cart.Cart;
+import com.springboot.project.onlineShop.model.Cart;
 import com.springboot.project.onlineShop.model.ShippingAddress;
 import com.springboot.project.onlineShop.model.User;
 
 @Entity
 @Table(name = "customer")
 public class Customer implements Serializable {
-
-    private static final long serialVersionUID = 2652327633296064143L;
+//
+//    private static final String serialVersionUID = 2652327633296064143L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     private Long id;
-    private String firstName;
-    private String lastName;
-    private String customerPhone;
+
+    @Column(name="first_name")
+    private String first_name;
+
+    @Column(name="last_name")
+    private String last_name;
+
+    @Column(name="customer_phone")
+    private String customer_phone;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "shippingAddressId")
-    private ShippingAddress shippingAddress;
+    @JoinColumn(name = "shipping_address_id")
+    private ShippingAddress shipping_address;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "billingAddressId")
-    private BillingAddress billingAddress;
+    @JoinColumn(name = "billing_address_id")
+    private BillingAddress billing_address;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "userId")
+    @JoinColumn(name = "user_id")
     private User user;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "cartId")
-    @JsonIgnore
+    @JoinColumn(name = "cart_id")
     private Cart cart;
 
     public Long getId() {
@@ -57,43 +56,43 @@ public class Customer implements Serializable {
     }
 
     public String getFirstName() {
-        return firstName;
+        return first_name;
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        this.first_name = firstName;
     }
 
     public String getLastName() {
-        return lastName;
+        return last_name;
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        this.last_name = lastName;
     }
 
     public String getCustomerPhone() {
-        return customerPhone;
+        return customer_phone;
     }
 
     public void setCustomerPhone(String customerPhone) {
-        this.customerPhone = customerPhone;
+        this.customer_phone = customerPhone;
     }
 
     public ShippingAddress getShippingAddress() {
-        return shippingAddress;
+        return shipping_address;
     }
 
     public void setShippingAddress(ShippingAddress shippingAddress) {
-        this.shippingAddress = shippingAddress;
+        this.shipping_address = shippingAddress;
     }
 
     public BillingAddress getBillingAddress() {
-        return billingAddress;
+        return billing_address;
     }
 
     public void setBillingAddress(BillingAddress billingAddress) {
-        this.billingAddress = billingAddress;
+        this.billing_address = billingAddress;
     }
 
     public User getUser() {
@@ -111,4 +110,14 @@ public class Customer implements Serializable {
     public void setCart(Cart cart) {
         this.cart = cart;
     }
+
+//    @Override
+//    public String toString(){
+//        String id_ = "Id: " + id + "\n";
+//        String firstName_ = "firstName: " + firstName + "\n";
+//        String lastName_ = "lastName: " + lastName + "\n";
+//        String customerPhone_ = "Phone: " + customerPhone + "\n";
+//        String addressId_ = "AddressId: " + billingAddress.getId() + "\n";
+//        return id_ + firstName_ + lastName_ + customerPhone_ + addressId_;
+//    }
 }

@@ -1,7 +1,7 @@
 package com.springboot.project.onlineShop.service;
 
-import com.springboot.project.onlineShop.model.SalesOrder.SalesOrder;
-import com.springboot.project.onlineShop.model.SalesOrder.SalesOrderRepository;
+import com.springboot.project.onlineShop.model.SalesOrder;
+import com.springboot.project.onlineShop.repository.SalesOrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

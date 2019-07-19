@@ -6,16 +6,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class HomePageController {
-
-	@GetMapping(value="/")
-	@ResponseBody
-	public String StartingPoint(){
-		return "index";
-	}
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String returnHomePage()
 	{
-		System.out.println("Actually Found Here");
    	 	return "index";
     }
    

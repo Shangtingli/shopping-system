@@ -2,26 +2,26 @@ package com.springboot.project.onlineShop.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-
-import com.springboot.project.onlineShop.model.Customer.Customer;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
 public class User implements Serializable {
 
-    private static final long serialVersionUID = 2681531852204068105L;
+//    private static final String serialVersionUID = 2681531852204068105L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     private Long id;
-    private String emailId;
+
+    @Column(name="email_id")
+    private String email_id;
+
+    @Column(name="password")
     private String password;
+
+    @Column(name="enabled")
     private boolean enabled;
 
     @OneToOne(mappedBy = "user")
@@ -36,11 +36,11 @@ public class User implements Serializable {
     }
 
     public String getEmailId() {
-        return emailId;
+        return email_id;
     }
 
     public void setEmailId(String emailId) {
-        this.emailId = emailId;
+        this.email_id = emailId;
     }
 
     public String getPassword() {

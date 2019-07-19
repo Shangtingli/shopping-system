@@ -2,7 +2,6 @@ package com.springboot.project.onlineShop.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -10,11 +9,11 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import com.springboot.project.onlineShop.model.Product.Product;
+import com.springboot.project.onlineShop.model.Product;
 import com.springboot.project.onlineShop.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -69,22 +68,21 @@ public class ProductController {
    	 return "redirect:/getAllProducts";
     }
 
-	@RequestMapping(value = "/admin/product/addProduct", method = RequestMethod.GET) 
+	@RequestMapping(value = "/admin/product/addProduct", method = RequestMethod.GET)
 	public ModelAndView getProductForm() {
-		System.out.println("Get Product Form;");
 		return new ModelAndView("addProduct", "productForm", new Product());
 	}
 
 
     @RequestMapping(value = "/admin/product/addProduct", method = RequestMethod.POST)
+	@Transactional
     public String addProduct(@Valid @ModelAttribute(value = "productForm") Product product, BindingResult result) throws IOException {
-
    	 if (result.hasErrors()) {
    		 return "addProduct";
    	 }
    	 productService.addProduct(product);
    	 MultipartFile image = product.getProductImage();
-   	
+
    	 if (image != null && !image.isEmpty()) {
    		 //TODO: Probably Needs to Store the image on server side
    		 Path path = Paths.get("/Users/shangtingli/Desktop/PROJECT/onlineShop/target/onlineShop/WEB-INF/resource/images/" + image.getOriginalFilename() + ".jpg");
@@ -108,7 +106,7 @@ public class ProductController {
    	 modelAndView.setViewName("editProduct");
    	 modelAndView.addObject("editProductObj", product);
    	 modelAndView.addObject("productId", productId);
-   	 
+
    	 return modelAndView;
     }
 

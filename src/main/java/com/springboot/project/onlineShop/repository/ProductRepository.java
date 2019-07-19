@@ -1,5 +1,6 @@
-package com.springboot.project.onlineShop.model.Product;
+package com.springboot.project.onlineShop.repository;
 
+import com.springboot.project.onlineShop.model.Product;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

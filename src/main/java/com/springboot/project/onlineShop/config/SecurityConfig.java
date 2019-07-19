@@ -27,6 +27,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     }
     protected void configure(HttpSecurity http) throws Exception {
+        //Important: formLogin().loginPage("/login") provides the POST method for the
+        //Login page
         http
                 .csrf().disable()
                 .formLogin()
@@ -43,15 +45,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        //Important:Prior to Spring Security 5.0 the default PasswordEncoder was NoOpPasswordEncoder which required plain text passwords.
+        // In Spring Security 5, the default is DelegatingPasswordEncoder, which required Password Storage Format.
+        //{noop} provides a password storage format
         auth
                 .inMemoryAuthentication()
-                .withUser("shangtingli@outlook.com").password("123456").authorities("ROLE_ADMIN");
+                .withUser("shangtingli@outlook.com").password("{noop}123456").authorities("ROLE_ADMIN");
 
+        auth
+                .inMemoryAuthentication()
+                .withUser("gracedong@sap.com").password("{noop}beauty").authorities("ROLE_USER");
         auth
                 .jdbcAuthentication()
                 .dataSource(dataSource)
-                .usersByUsernameQuery("SELECT emailId, password, enabled FROM users WHERE emailId=? ")
-                .authoritiesByUsernameQuery("SELECT emailId,authorities FROM authorities WHERE emailId =?");
+                .usersByUsernameQuery("SELECT email_id, password, enabled FROM users WHERE email_id=? ")
+                .authoritiesByUsernameQuery("SELECT email_id,authorities FROM authorities WHERE email_id =?");
     }
 
 }

@@ -1,7 +1,7 @@
 package com.springboot.project.onlineShop.service;
 
-import com.springboot.project.onlineShop.model.Cart.Cart;
-import com.springboot.project.onlineShop.model.CartItem.CartItem;
+import com.springboot.project.onlineShop.model.Cart;
+import com.springboot.project.onlineShop.model.CartItem;
 
 public interface CartItemService {
     void addCartItem(CartItem cartItem);

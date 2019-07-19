@@ -1,7 +1,7 @@
 package com.springboot.project.onlineShop.service;
 
-import com.springboot.project.onlineShop.model.Customer.Customer;
-import com.springboot.project.onlineShop.model.Customer.CustomerRepository;
+import com.springboot.project.onlineShop.model.Customer;
+import com.springboot.project.onlineShop.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +14,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void addCustomer(Customer customer) {
+        System.out.println(customer);
         customerRepository.save(customer);
     }
 

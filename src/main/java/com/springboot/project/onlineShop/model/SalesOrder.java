@@ -1,40 +1,40 @@
-package com.springboot.project.onlineShop.model.SalesOrder;
+package com.springboot.project.onlineShop.model;
 
 import com.springboot.project.onlineShop.model.BillingAddress;
-import com.springboot.project.onlineShop.model.Cart.Cart;
-import com.springboot.project.onlineShop.model.Customer.Customer;
+import com.springboot.project.onlineShop.model.Cart;
+import com.springboot.project.onlineShop.model.Customer;
 import com.springboot.project.onlineShop.model.ShippingAddress;
 
 import java.io.Serializable;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "salesorder")
 public class SalesOrder implements Serializable {
 
-    private static final long serialVersionUID = -6571020025726257848L;
+//    private static final String serialVersionUID = -6571020025726257848L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     private Long id;
 
     @OneToOne
+    @JoinColumn(name="cart")
     private Cart cart;
 
     @OneToOne
+    @JoinColumn(name="customer")
     private Customer customer;
 
     @OneToOne
-    private ShippingAddress shippingAddress;
+    @JoinColumn(name="shipping_address_id")
+    private ShippingAddress shipping_address;
 
     @OneToOne
-    private BillingAddress billingAddress;
+    @JoinColumn(name="billing_address_id")
+    private BillingAddress billing_address;
 
     public Long getId() {
         return id;
@@ -61,18 +61,18 @@ public class SalesOrder implements Serializable {
     }
 
     public ShippingAddress getShippingAddress() {
-        return shippingAddress;
+        return shipping_address;
     }
 
     public void setShippingAddress(ShippingAddress shippingAddress) {
-        this.shippingAddress = shippingAddress;
+        this.shipping_address = shippingAddress;
     }
 
     public BillingAddress getBillingAddress() {
-        return billingAddress;
+        return billing_address;
     }
 
     public void setBillingAddress(BillingAddress billingAddress) {
-        this.billingAddress = billingAddress;
+        this.billing_address = billingAddress;
     }
 }

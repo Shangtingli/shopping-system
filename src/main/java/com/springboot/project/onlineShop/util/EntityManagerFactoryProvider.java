@@ -18,7 +18,6 @@ public class EntityManagerFactoryProvider {
         entityManagerFactoryBean.setPersistenceProvider(new PersistenceProvider());
         entityManagerFactoryBean.setPackagesToScan(packagesToScan);
         entityManagerFactoryBean.setDataSource(dataSource);
-
         // for JPA we use the classloader that Spring uses to avoid classloader issues
         entityManagerFactoryBean.setJpaPropertyMap(getJPAProperties(dataSource.getClass().getClassLoader()));
         entityManagerFactoryBean.setLoadTimeWeaver(new SimpleLoadTimeWeaver());
