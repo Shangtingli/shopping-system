@@ -14,6 +14,7 @@ public class Authorities implements Serializable {
     public Authorities(){
 
     }
+
     public Authorities(Long id, String emailId, String authorities){
         this.id = id;
         this.email_id = emailId;
@@ -25,10 +26,10 @@ public class Authorities implements Serializable {
     @Column(name="id")
     private Long id;
 
-    @Column(name="email_id")
+    @Column(name="username")
     private String email_id;
 
-    @Column(name="authorities")
+    @Column(name="authority")
     private String authorities;
 
     public Long getId() {

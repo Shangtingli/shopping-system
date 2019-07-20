@@ -53,8 +53,11 @@ public class RegistrationController {
 //		System.out.println(customer.getId());
 
 		//TODO: Why JDBCAuthentication Does Not Work
+		customer.setCart(new Cart());
     	customerService.addCustomer(customer);
 		authoritiesService.addAuthorities(new Authorities(null,customer.getUser().getEmailId(),"ROLE_USER"));
+//		System.out.println(customer.getCart());
+
     	modelAndView.addObject("registrationSuccess", "Registered Successfully. Login using username and password");
     	modelAndView.setViewName("login");
     	return modelAndView;

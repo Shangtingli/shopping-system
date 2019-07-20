@@ -15,14 +15,16 @@ public class User implements Serializable {
     @Column(name="id")
     private Long id;
 
-    @Column(name="email_id")
+    @Column(name="username")
     private String email_id;
 
     @Column(name="password")
     private String password;
 
+
+    //TODO: Invalidate function, in the future
     @Column(name="enabled")
-    private boolean enabled;
+    private boolean enabled = true;
 
     @OneToOne(mappedBy = "user")
     private Customer customer;

@@ -21,14 +21,11 @@ public class CartRepositoryTest {
     private CartItemRepository cartItemRepository;
 
     @Test
-    public void TestInsertNull(){
+    public void TestInsertDefaultConstructor(){
         cartRepository.deleteAll();
         Cart cart = new Cart();
         cartRepository.save(cart);
         List<Cart> carts = (List<Cart>) cartRepository.findAll();
         assert(carts.size()==1);
-
-
-
     }
 }
