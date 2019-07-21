@@ -37,14 +37,6 @@ public class RegistrationController {
 	public ModelAndView registerCustomer(@Valid @ModelAttribute(value = "customer") Customer customer,
         	BindingResult result) {
     	ModelAndView modelAndView = new ModelAndView();
-
-//		customer.setId(dummy);
-//		customer.getBillingAddress().setId(dummy);
-//		customer.getShippingAddress().setId(dummy);
-//		customer.getUser().setId(dummy);
-//		customer.setCart(new Cart());
-//		customer.getCart().setId(dummy);
-//		System.out.println(customer);
     	if (result.hasErrors()) {
         	modelAndView.setViewName("register");
         	return modelAndView;

@@ -3,7 +3,6 @@ package com.springboot.project.onlineShop.model;
 import java.io.Serializable;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -110,13 +109,7 @@ public class Customer implements Serializable {
         this.cart = cart;
     }
 
-//    @Override
-//    public String toString(){
-//        String id_ = "Id: " + id + "\n";
-//        String firstName_ = "firstName: " + firstName + "\n";
-//        String lastName_ = "lastName: " + lastName + "\n";
-//        String customerPhone_ = "Phone: " + customerPhone + "\n";
-//        String addressId_ = "AddressId: " + billingAddress.getId() + "\n";
-//        return id_ + firstName_ + lastName_ + customerPhone_ + addressId_;
-//    }
+    public Customer(){
+
+    }
 }
