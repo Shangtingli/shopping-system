@@ -12,7 +12,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -26,17 +25,17 @@ public class ProductServiceTest {
         System.out.println("Hello");
         System.out.println(productService == null);
     }
-    @Test
-    public void saveOne() throws Exception {
-        productService.deleteAll();
-        Product product = new Product();
-        product.setProductName("Test1");
-        productService.addProduct(product);
-        Product product2 = new Product();
-        product2.setProductName("Test2");
-        productService.addProduct(product2);
-        List<Product> products = productService.getAllProducts();
-        assert(products.size()== 2);
-        productService.deleteAll();
-    }
+//    @Test
+//    public void saveOne() throws Exception {
+//        productService.deleteAll();
+//        Product product = new Product();
+//        product.setProductName("Test1");
+//        productService.addProduct(product);
+//        Product product2 = new Product();
+//        product2.setProductName("Test2");
+//        productService.addProduct(product2);
+//        List<Product> products = productService.getAllProducts();
+//        assert(products.size()== 2);
+//        productService.deleteAll();
+//    }
 }

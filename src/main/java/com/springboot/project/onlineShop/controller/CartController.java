@@ -28,11 +28,24 @@ public class CartController {
    	 Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
    	 String username = loggedInUser.getName();
    	 Customer customer = customerService.getCustomerByUserName(username);
+        System.out.println("==================================");
+        System.out.println(customer.getCart());
    	 ModelAndView modelAndView = new ModelAndView("cart");
    	 modelAndView.addObject("cartId", customer.getCart().getId());
    	 return modelAndView;
     }
-    
+
+    //Testing Purposes
+    @RequestMapping(value = "/cart/getCartByUserName/{username}", method = RequestMethod.GET)
+    public ModelAndView getCartBySpecificId(@PathVariable(value="username") String username){
+        Customer customer = customerService.getCustomerByUserName(username);
+        System.out.println("==================================");
+        System.out.println(customer.getCart());
+        ModelAndView modelAndView = new ModelAndView("cart");
+        modelAndView.addObject("cartId", customer.getCart().getId());
+        return modelAndView;
+    }
+
     @RequestMapping("/cart/getCart/{cartId}")
     public @ResponseBody
     Cart getCartItems(@PathVariable(value="cartId")Long cartId){

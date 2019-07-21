@@ -48,6 +48,7 @@ var app = angular.module("myapp", []).controller(
 			$scope.calculateTotal = function() {
 				var total = 0.0;
 				for (var i = 0; i < $scope.carts.cartItem.length; i++)
+					debugger;
 					total = total + $scope.carts.cartItem[i].price;
 				return total;
 

@@ -15,9 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 
 
 @Controller
@@ -37,6 +35,7 @@ public class CartItemController {
     @RequestMapping("/cart/add/{productId}")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void addCartItem(@PathVariable(value = "productId") Long productId) {
+    	System.out.println("Hello");
    	 Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
    	 String username = loggedInUser.getName();
    	 Customer customer = customerService.getCustomerByUserName(username);

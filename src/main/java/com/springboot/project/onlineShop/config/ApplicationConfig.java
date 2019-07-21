@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.security.web.firewall.HttpFirewall;
+import org.springframework.security.web.firewall.StrictHttpFirewall;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
@@ -36,6 +38,9 @@ public class ApplicationConfig {
 
         return dataSource;
     }
+
+    // Properly encode URL encoding for special characters.
+
     //
 //    //TODO: Issue: After Commenting This Out, The bug: Object: is not a valid entity disappear.
 //    @Bean(name = "entityManagerFactory")
