@@ -131,7 +131,11 @@
             <version>4.2.2.RELEASE</version>
             <scope>test</scope>
         </dependency>
-
+		<dependency>
+			<groupId>net.corda</groupId>
+			<artifactId>corda-jackson</artifactId>
+			<version>3.1-corda</version>
+		</dependency>
     </dependencies>
 
 	<build>

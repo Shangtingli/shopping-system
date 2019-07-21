@@ -6,17 +6,17 @@ import com.springboot.project.onlineShop.model.*;
 import javax.persistence.*;
 
 public class CustomerBasicBuilder implements CustomerBuilder{
-    private String first_name;
-    private String last_name;
-    private String customer_phone;
-    private String customer_email;
-    private String password;
+    public String first_name;
+    public String last_name;
+    public String customer_phone;
+    public String customer_email;
+    public String password;
     //Assumes shipping address is same as billing address
-    private String address;
-    private String city;
-    private String state;
-    private String zipcode;
-    private String country;
+    public String address;
+    public String city;
+    public String state;
+    public String zipcode;
+    public String country;
 
     public void setPassword(String password) {
         this.password = password;
