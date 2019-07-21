@@ -6,10 +6,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.springboot.project.onlineShop.model.BillingAddress;
-import com.springboot.project.onlineShop.model.Cart;
-import com.springboot.project.onlineShop.model.ShippingAddress;
-import com.springboot.project.onlineShop.model.User;
 
 @Entity
 @Table(name = "customer")
@@ -43,8 +39,10 @@ public class Customer implements Serializable {
     @JoinColumn(name = "user_id")
     private User user;
 
+    //Important: Reason to add JsonIgnore, avoid the fast xml jackson stack overflow.
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "cart_id")
+    @JsonIgnore
     private Cart cart;
 
     public Long getId() {
@@ -104,6 +102,7 @@ public class Customer implements Serializable {
     }
 
     public Cart getCart() {
+
         return cart;
     }
 

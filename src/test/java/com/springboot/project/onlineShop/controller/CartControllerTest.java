@@ -19,9 +19,4 @@ public class CartControllerTest {
     public void sayHello(){
         System.out.println("Hello");
     }
-
-    @Test
-    public void test1() throws Exception {
-        mockMvc.perform(get("localhost:8080/cart/getCartByUserName/jason.li11@sap.com"));
-    }
 }

@@ -21,6 +21,7 @@ public class Cart implements Serializable {
     private Long id;
 
     @OneToOne(mappedBy = "cart")
+    @JsonIgnore
     private Customer customer;
 
     @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL,fetch=FetchType.EAGER)

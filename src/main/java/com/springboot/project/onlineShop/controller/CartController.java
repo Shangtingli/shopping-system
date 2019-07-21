@@ -31,7 +31,9 @@ public class CartController {
         System.out.println("==================================");
         System.out.println(customer.getCart());
    	 ModelAndView modelAndView = new ModelAndView("cart");
-   	 modelAndView.addObject("cartId", customer.getCart().getId());
+   	 Cart cart = customer.getCart();
+   	 Long id = cart.getId();
+   	 modelAndView.addObject("cartId", id);
    	 return modelAndView;
     }
 

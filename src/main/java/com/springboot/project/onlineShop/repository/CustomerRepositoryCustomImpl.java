@@ -31,6 +31,7 @@ public class CustomerRepositoryCustomImpl implements CustomerRepositoryCustom {
         TypedQuery<User> query = entityManager.createQuery(criteriaQuery);
         query.setParameter(emailIdParameter, userName);
         List<User> listOfUsers = query.getResultList();
+
         if (listOfUsers.size() > 0){
             return listOfUsers.get(0).getCustomer();
         }
