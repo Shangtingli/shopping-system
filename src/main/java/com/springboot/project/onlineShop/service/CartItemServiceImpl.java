@@ -6,6 +6,10 @@ import com.springboot.project.onlineShop.model.CartItem;
 import com.springboot.project.onlineShop.repository.CartItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.PreRemove;
+import java.util.List;
 
 @Service
 public class CartItemServiceImpl implements CartItemService {
@@ -19,8 +23,11 @@ public class CartItemServiceImpl implements CartItemService {
     }
 
     @Override
+    @Transactional
     public void removeCartItem(Long CartItemId) {
-        cartItemRepository.deleteById(CartItemId);
+
+        cartItemRepository.deleteById(new Long(CartItemId));
+        int size =((List<CartItem>) cartItemRepository.findAll()).size();
     }
 
     @Override
