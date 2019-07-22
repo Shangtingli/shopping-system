@@ -3,7 +3,7 @@ A maven web project that mimics the online shopping process. Supports Register, 
 
 ## Branches
 * master: Classic Spring MVC + WebFlow + Security
-* boot: SpringBoot + MVC + WebFlow + Security
+* boot: SpringBoot + MVC + Security + RabbitMQ
 
 # Usage:
 ```r
