@@ -4,6 +4,7 @@ import com.springboot.project.onlineShop.model.Customer;
 import com.springboot.project.onlineShop.model.CustomerBuilder.CustomerBuilderFromMessage;
 import com.springboot.project.onlineShop.service.AuthoritiesService;
 import com.springboot.project.onlineShop.service.CustomerService;
+import com.springboot.project.onlineShop.service.EmailService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.Message;
@@ -23,22 +24,20 @@ public class RabbitMQReceiver {
     @Autowired
     private AuthoritiesService authoritiesService;
 
+    @Autowired
+    private EmailService emailService;
+
     @RabbitListener(queues = "#{queue.name}")
     public void receiveMessage(final Message message) {
         log.info("Received Message {}", message.toString());
-        log.info("Sleep for {} seconds to make asynchronous effect more obvious",SLEEP_TIME/1000);
-        //
-        try {
-            Thread.sleep(SLEEP_TIME);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
         CustomerBuilderFromMessage builder = new CustomerBuilderFromMessage();
         builder.setMessage(message);
         Customer customer = builder.build();
+        //TODO: The Email Cannot be sent (Timeout)
+//        emailService.send("shangtingli@outlook.com","Customer Registered", "A new Customer is registered");
         customerService.addCustomer(customer);
         authoritiesService.addAuthorities(new Authorities(null,customer.getUser().getEmailId(),"ROLE_USER"));
-
         log.info("Finished Adding Customers to Database");
     }
 

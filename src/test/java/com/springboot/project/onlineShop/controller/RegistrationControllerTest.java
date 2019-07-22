@@ -3,6 +3,8 @@ package com.springboot.project.onlineShop.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.springboot.project.onlineShop.config.ApplicationConfig;
+import com.springboot.project.onlineShop.config.RabbitMQConfig;
+import com.springboot.project.onlineShop.config.SecurityConfig;
 import com.springboot.project.onlineShop.model.Customer;
 import com.springboot.project.onlineShop.model.CustomerBuilder.CustomerBasicBuilder;
 import com.springboot.project.onlineShop.model.CustomerBuilder.CustomerBuilder;
@@ -28,7 +30,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes={ApplicationConfig.class})
+@ContextConfiguration(classes={ApplicationConfig.class, SecurityConfig.class, RabbitMQConfig.class})
 @WebAppConfiguration
 public class RegistrationControllerTest {
 
