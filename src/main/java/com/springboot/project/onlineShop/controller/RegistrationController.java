@@ -2,6 +2,7 @@ package com.springboot.project.onlineShop.controller;
 
 import javax.validation.Valid;
 
+import com.springboot.project.onlineShop.amqp.RabbitMQSender;
 import com.springboot.project.onlineShop.model.Authorities;
 import com.springboot.project.onlineShop.model.Cart;
 import com.springboot.project.onlineShop.model.Customer;
@@ -28,6 +29,9 @@ public class RegistrationController {
 	@Autowired
 	private AuthoritiesService authoritiesService;
 
+	@Autowired
+	private RabbitMQSender rabbitMQSender;
+
 	@RequestMapping(value = "/customer/registration", method = RequestMethod.GET)
 	public ModelAndView getRegistrationForm() {
     	return new ModelAndView("register", "customer", new Customer());
@@ -41,17 +45,13 @@ public class RegistrationController {
         	modelAndView.setViewName("register");
         	return modelAndView;
     	}
-
-//		System.out.println(customer.getId());
-
-		//TODO: Why JDBCAuthentication Does Not Work
 		customer.setCart(new Cart());
     	customerService.addCustomer(customer);
 		authoritiesService.addAuthorities(new Authorities(null,customer.getUser().getEmailId(),"ROLE_USER"));
-//		System.out.println(customer.getCart());
 
-    	modelAndView.addObject("registrationSuccess", "Registered Successfully. Login using username and password");
+    	modelAndView.addObject("registrationSuccess", "Registered Successfully. Login using username and password. You would receive an email about this.");
     	modelAndView.setViewName("login");
+    	rabbitMQSender.send(customer);
     	return modelAndView;
 	}
 }
