@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 public class RabbitMQReceiver {
 
     private static final Logger log = LoggerFactory.getLogger(RabbitMQReceiver.class);
-    private static final int SLEEP_TIME = 60000;
+    private static final int SLEEP_TIME = 10000;
     @Autowired
     private CustomerService customerService;
 
@@ -34,11 +34,25 @@ public class RabbitMQReceiver {
         CustomerBuilderFromMessage builder = new CustomerBuilderFromMessage();
         builder.setMessage(message);
         Customer customer = builder.build();
-        //TODO: The Email Cannot be sent (Timeout)
-//        emailService.send("shangtingli@outlook.com","Customer Registered", "A new Customer is registered");
+        //Important: You have to open up the Email POP3/SMTP configuration for the email to work
+
+        /**
+         * Well...You know, to make AMQP More Obvious.
+         */
+        try{
+            Thread.sleep(SLEEP_TIME);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        emailService.send(customer.getUser().getEmailId(),"Registration Confirmation", constructText(customer));
         customerService.addCustomer(customer);
         authoritiesService.addAuthorities(new Authorities(null,customer.getUser().getEmailId(),"ROLE_USER"));
         log.info("Finished Adding Customers to Database");
     }
 
+    private static String constructText(Customer customer){
+        String line1 = "Hi, " + customer.getFirstName() + ":\n";
+        String line2 = "Thank you for registering for this application, we look forward to serve you";
+        return line1 + line2;
+    }
 }

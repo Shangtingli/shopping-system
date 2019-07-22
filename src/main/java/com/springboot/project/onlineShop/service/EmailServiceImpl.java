@@ -27,12 +27,12 @@ public class EmailServiceImpl implements EmailService{
         MimeMessage message = javaMailSender.createMimeMessage();
         MimeMessageHelper helper;
         try {
-            helper = new MimeMessageHelper(message, true);//true indicates multipart message
-            helper.setFrom(from) ;// <--- THIS IS IMPORTANT
+            helper = new MimeMessageHelper(message, true);
+            helper.setFrom(from) ;
 
             helper.setSubject(subject);
             helper.setTo(to);
-            helper.setText(body, true);//true indicates body is html
+            helper.setText(body, true);
             javaMailSender.send(message);
         } catch (MessagingException e) {
             e.printStackTrace();
