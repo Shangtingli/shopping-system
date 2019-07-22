@@ -35,7 +35,6 @@ public class CartItemController {
     @RequestMapping("/cart/add/{productId}")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void addCartItem(@PathVariable(value = "productId") Long productId) {
-    	System.out.println("Hello");
    	 Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
    	 String username = loggedInUser.getName();
    	 Customer customer = customerService.getCustomerByUserName(username);

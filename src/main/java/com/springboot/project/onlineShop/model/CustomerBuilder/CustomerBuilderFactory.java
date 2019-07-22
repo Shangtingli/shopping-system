@@ -9,6 +9,8 @@ public class CustomerBuilderFactory {
         switch(builder){
             case "Basic":
                 return new CustomerBasicBuilder();
+            case "Message":
+                return new CustomerBuilderFromMessage();
                 default:
                     throw new IllegalStateException("Invalid Builder: " + builder);
         }

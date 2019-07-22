@@ -10,6 +10,8 @@ import com.springboot.project.onlineShop.repository.AuthoritiesRepository;
 import com.springboot.project.onlineShop.repository.UserRepository;
 import com.springboot.project.onlineShop.service.AuthoritiesService;
 import com.springboot.project.onlineShop.service.CustomerService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -22,12 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class RegistrationController {
-    
-	@Autowired
-	private CustomerService customerService;
-
-	@Autowired
-	private AuthoritiesService authoritiesService;
+	private static final Logger log = LoggerFactory.getLogger(RegistrationController.class);
 
 	@Autowired
 	private RabbitMQSender rabbitMQSender;
@@ -45,13 +42,15 @@ public class RegistrationController {
         	modelAndView.setViewName("register");
         	return modelAndView;
     	}
-		customer.setCart(new Cart());
-    	customerService.addCustomer(customer);
-		authoritiesService.addAuthorities(new Authorities(null,customer.getUser().getEmailId(),"ROLE_USER"));
+
+    	//Asynchrounously Process the message
+		log.info("Sending Customer Message Asynchronously");
+		rabbitMQSender.send(customer);
 
     	modelAndView.addObject("registrationSuccess", "Registered Successfully. Login using username and password. You would receive an email about this.");
     	modelAndView.setViewName("login");
-    	rabbitMQSender.send(customer);
+
+    	log.info("Success in generating view at a responsive speed");
     	return modelAndView;
 	}
 }

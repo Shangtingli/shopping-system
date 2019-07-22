@@ -13,26 +13,26 @@ import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 public class RabbitMQConfig {
 
     @Value("${rabbit_mq_queue}")
-    String queueName;
+    private String queueName;
 
     @Value("${rabbit_mq_exchange}")
-    String exchangeName;
+    private String exchangeName;
 
     @Value("${rabbit_mq_routing_key}")
-    String routingKey;
+    private String routingKey;
 
     @Bean
-    Queue queue(){
+    public Queue queue(){
         return new Queue(queueName, false);
     }
 
     @Bean
-    DirectExchange exchange() {
+    public DirectExchange exchange() {
         return new DirectExchange(exchangeName);
     }
 
     @Bean
-    Binding binding(Queue queue, DirectExchange exchange) {
+    public Binding binding(Queue queue, DirectExchange exchange) {
         return BindingBuilder.bind(queue).to(exchange).with(routingKey);
     }
 

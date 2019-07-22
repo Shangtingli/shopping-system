@@ -1,6 +1,9 @@
 package com.springboot.project.onlineShop.config;
 
+import com.springboot.project.onlineShop.amqp.RabbitMQReceiver;
 import com.springboot.project.onlineShop.util.EntityManagerFactoryProvider;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

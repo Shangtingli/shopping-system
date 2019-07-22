@@ -6,6 +6,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class HomePageController {
+
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String returnHomePage()
 	{

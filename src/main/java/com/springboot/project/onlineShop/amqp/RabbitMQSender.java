@@ -2,6 +2,8 @@ package com.springboot.project.onlineShop.amqp;
 
 
 import com.springboot.project.onlineShop.model.Customer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -9,6 +11,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class RabbitMQSender {
+    private static final Logger log = LoggerFactory.getLogger(RabbitMQSender.class);
+
     @Autowired
     private AmqpTemplate amqpTemplate;
 
@@ -20,6 +24,6 @@ public class RabbitMQSender {
 
     public void send(Customer customer) {
         amqpTemplate.convertAndSend(exchange, routingkey, customer);
-        System.out.println("Message Sent For:"  + customer.getFirstName() + " " + customer.getLastName());
+        log.info("Message Sent For {}:" ,customer.getFirstName() + " " + customer.getLastName());
     }
 }

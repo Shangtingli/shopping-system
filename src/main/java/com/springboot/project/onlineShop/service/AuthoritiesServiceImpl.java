@@ -13,8 +13,6 @@ public class AuthoritiesServiceImpl implements AuthoritiesService {
 
     @Override
     public void addAuthorities(Authorities authorities) {
-
         authoritiesRepository.save(authorities);
-        System.out.println("Hello");
     }
 }

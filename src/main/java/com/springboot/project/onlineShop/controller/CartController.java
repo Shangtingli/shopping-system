@@ -1,9 +1,12 @@
 package com.springboot.project.onlineShop.controller;
 
+import com.springboot.project.onlineShop.amqp.RabbitMQReceiver;
 import com.springboot.project.onlineShop.model.Cart;
 import com.springboot.project.onlineShop.model.Customer;
 import com.springboot.project.onlineShop.service.CartService;
 import com.springboot.project.onlineShop.service.CustomerService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -17,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class CartController {
+    private static final Logger log = LoggerFactory.getLogger(CartController.class);
     @Autowired
     private CustomerService customerService;
     
@@ -27,25 +31,13 @@ public class CartController {
     public ModelAndView getCartId(){
    	 Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
    	 String username = loggedInUser.getName();
-   	 Customer customer = customerService.getCustomerByUserName(username);
-        System.out.println("==================================");
-        System.out.println(customer.getCart());
+        log.info("Getting Cart Id of {}",username);
+        Customer customer = customerService.getCustomerByUserName(username);
    	 ModelAndView modelAndView = new ModelAndView("cart");
    	 Cart cart = customer.getCart();
    	 Long id = cart.getId();
    	 modelAndView.addObject("cartId", id);
    	 return modelAndView;
-    }
-
-    //Testing Purposes
-    @RequestMapping(value = "/cart/getCartByUserName/{username}", method = RequestMethod.GET)
-    public ModelAndView getCartBySpecificId(@PathVariable(value="username") String username){
-        Customer customer = customerService.getCustomerByUserName(username);
-        System.out.println("==================================");
-        System.out.println(customer.getCart());
-        ModelAndView modelAndView = new ModelAndView("cart");
-        modelAndView.addObject("cartId", customer.getCart().getId());
-        return modelAndView;
     }
 
     @RequestMapping("/cart/getCart/{cartId}")
