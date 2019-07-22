@@ -131,12 +131,23 @@
             <version>4.2.2.RELEASE</version>
             <scope>test</scope>
         </dependency>
+
 		<dependency>
-			<groupId>net.corda</groupId>
-			<artifactId>corda-jackson</artifactId>
-			<version>3.1-corda</version>
+			<groupId>com.netflix.hystrix</groupId>
+			<artifactId>hystrix-core</artifactId>
+			<version>1.5.10</version>
 		</dependency>
-    </dependencies>
+		<dependency>
+			<groupId>org.springframework.amqp</groupId>
+			<artifactId>spring-amqp</artifactId>
+			<version>2.1.7.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.amqp</groupId>
+			<artifactId>spring-rabbit</artifactId>
+			<version>2.1.7.RELEASE</version>
+		</dependency>
+	</dependencies>
 
 	<build>
 		<plugins>
