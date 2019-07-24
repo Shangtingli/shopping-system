@@ -1,15 +1,14 @@
 package com.springboot.project.onlineShop.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.springboot.project.onlineShop.model.Cart;
 import com.springboot.project.onlineShop.model.CartItem;
 import com.springboot.project.onlineShop.model.Customer;
 import com.springboot.project.onlineShop.model.Product;
-import com.springboot.project.onlineShop.service.CartItemService;
-import com.springboot.project.onlineShop.service.CartService;
-import com.springboot.project.onlineShop.service.CustomerService;
-import com.springboot.project.onlineShop.service.ProductService;
+import com.springboot.project.onlineShop.service.*;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +16,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import com.alibaba.fastjson.JSON;
 
 
 @Controller
@@ -32,6 +32,9 @@ public class CartItemController implements InitializingBean {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+	private RedisService redisService;
 
     @RequestMapping("/cart/add/{productId}")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
@@ -80,13 +83,14 @@ public class CartItemController implements InitializingBean {
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
+
 		List<Product> productList = productService.getAllProducts();
 		if (productList == null) {
 			return;
 		}
 		for (Product product: productList) {
-			redisService.set(GoodsKey.getMiaoshaGoodsStock, "" + good.getId(), good.getStockCount());
-			localOverMap.put(good.getId(), false);
+			redisService.set(Long.toString(product.getId()), product.getUnitStock());
 		}
+
 	}
 }

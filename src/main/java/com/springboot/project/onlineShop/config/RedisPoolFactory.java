@@ -17,8 +17,7 @@ public class RedisPoolFactory {
         jedisPoolConfig.setMaxIdle(redisConf.getPoolMaxIdle());
         jedisPoolConfig.setMaxTotal(redisConf.getPoolMaxTotal());
         jedisPoolConfig.setMaxWaitMillis(redisConf.getPoolMaxWait() * 1000);
-        JedisPool jp = new JedisPool(jedisPoolConfig, redisConf.getHost(), redisConf.getPort(),
-                redisConf.getTimeout() * 1000, redisConf.getPassword(), 0);
+        JedisPool jp = new JedisPool(redisConf.getHost(), redisConf.getPort());
         return jp;
     }
 }
