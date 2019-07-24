@@ -6,10 +6,10 @@ import com.springboot.project.onlineShop.model.*;
 import javax.persistence.*;
 
 public class CustomerBasicBuilder implements CustomerBuilder{
-    public String first_name;
-    public String last_name;
-    public String customer_phone;
-    public String customer_email;
+    public String firstName;
+    public String lastName;
+    public String customerPhone;
+    public String customerEmail;
     public String password;
     //Assumes shipping address is same as billing address
     public String address;
@@ -18,25 +18,24 @@ public class CustomerBasicBuilder implements CustomerBuilder{
     public String zipcode;
     public String country;
 
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setCustomerPhone(String customerPhone) {
+        this.customerPhone = customerPhone;
+    }
+
+    public void setCustomerEmail(String customerEmail) {
+        this.customerEmail = customerEmail;
+    }
+
     public void setPassword(String password) {
         this.password = password;
-    }
-
-
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
-    }
-
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
-    }
-
-    public void setCustomer_phone(String customer_phone) {
-        this.customer_phone = customer_phone;
-    }
-
-    public void setCustomer_email(String customer_email) {
-        this.customer_email = customer_email;
     }
 
     public void setAddress(String address) {
@@ -59,12 +58,11 @@ public class CustomerBasicBuilder implements CustomerBuilder{
         this.country = country;
     }
 
-
     public Customer build(){
         Customer customer = new Customer();
-        customer.setFirstName(first_name);
-        customer.setLastName(last_name);
-        customer.setCustomerPhone(customer_phone);
+        customer.setFirstName(firstName);
+        customer.setLastName(lastName);
+        customer.setCustomerPhone(customerPhone);
         //Address
         BillingAddress billingAddress = new BillingAddress();
         ShippingAddress shippingAddress = new ShippingAddress();
@@ -90,7 +88,7 @@ public class CustomerBasicBuilder implements CustomerBuilder{
         //User
         User user = new User();
         user.setPassword(password);
-        user.setEmailId(customer_email);
+        user.setEmailId(customerEmail);
         user.setEnabled(true);
         customer.setUser(user);
         user.setCustomer(customer);

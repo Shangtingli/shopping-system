@@ -40,14 +40,12 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void addProduct(Product product) {
-//        System.out.println(entityManager==null);
-//        entityManager.persist(product);
-//        System.out.println("Product Name: " + product.getProductName());
         productRepository.save(product);
     }
 
     @Override
     public void updateProduct(Product product) {
+
         productRepository.save(product);
     }
 

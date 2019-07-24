@@ -48,9 +48,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
 
-        auth
-                .inMemoryAuthentication()
-                .withUser("shangtingli@outlook.com").password("{noop}123456").authorities("ROLE_ADMIN");
+//        auth
+//                .inMemoryAuthentication()
+//                .withUser("shangtingli@outlook.com").password("{noop}123456").authorities("ROLE_ADMIN");
 
         auth.
                 jdbcAuthentication().passwordEncoder(passwordEncoder()).dataSource(dataSource);

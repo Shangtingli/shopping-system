@@ -10,6 +10,7 @@ import com.springboot.project.onlineShop.service.CartItemService;
 import com.springboot.project.onlineShop.service.CartService;
 import com.springboot.project.onlineShop.service.CustomerService;
 import com.springboot.project.onlineShop.service.ProductService;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
@@ -19,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @Controller
-public class CartItemController {
+public class CartItemController implements InitializingBean {
     @Autowired
     private CartService cartService;
 
@@ -42,7 +43,9 @@ public class CartItemController {
    	 Cart cart = customer.getCart();
    	 List<CartItem> cartItems = cart.getCartItem();
    	 Product product = productService.getProductById(productId);
-   	 
+   	 if (product.getUnitStock() <= 0){
+   	 	return;
+	 }
    	 for (int i = 0; i < cartItems.size(); i++) {
    		 CartItem cartItem = cartItems.get(i);
    		 if (product.getId() == (cartItem.getProduct().getId())) {
@@ -74,4 +77,16 @@ public class CartItemController {
    	 Cart cart = cartService.getCartById(cartId);
    	 cartItemService.removeAllCartItems(cart);
     }
+
+	@Override
+	public void afterPropertiesSet() throws Exception {
+		List<Product> productList = productService.getAllProducts();
+		if (productList == null) {
+			return;
+		}
+		for (Product product: productList) {
+			redisService.set(GoodsKey.getMiaoshaGoodsStock, "" + good.getId(), good.getStockCount());
+			localOverMap.put(good.getId(), false);
+		}
+	}
 }

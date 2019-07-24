@@ -21,21 +21,21 @@ public class RabbitMQConfig {
     @Value("${customer_mq_routing_key}")
     private String customerRoutingKey;
 
-//    @Value("${product_mq_routing_key}")
-//    private String productRoutingKey;
-//
-//    @Value("${product_mq_queue}")
-//    private String productQueueName;
+    @Value("${product_mq_routing_key}")
+    private String productRoutingKey;
+
+    @Value("${product_mq_queue}")
+    private String productQueueName;
 
     @Bean
     public Queue queue1(){
         return new Queue(customerQueueName, false);
     }
 
-//    @Bean
-//    public Queue queue2(){
-//        return new Queue(productQueueName, false);
-//    }
+    @Bean
+    public Queue queue2(){
+        return new Queue(productQueueName, false);
+    }
     @Bean
     public DirectExchange exchange() {
         return new DirectExchange(exchangeName);
@@ -46,10 +46,10 @@ public class RabbitMQConfig {
         return BindingBuilder.bind(queue1).to(exchange).with(customerRoutingKey);
     }
 
-//    @Bean
-//    public Binding binding2(Queue queue2, DirectExchange exchange){
-//        return BindingBuilder.bind(queue2).to(exchange).with(productRoutingKey);
-//    }
+    @Bean
+    public Binding binding2(Queue queue2, DirectExchange exchange){
+        return BindingBuilder.bind(queue2).to(exchange).with(productRoutingKey);
+    }
 
     @Bean
     public MessageConverter jsonMessageConverter() {

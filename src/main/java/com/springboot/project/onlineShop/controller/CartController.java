@@ -1,6 +1,4 @@
 package com.springboot.project.onlineShop.controller;
-
-import com.springboot.project.onlineShop.amqp.RabbitMQReceiver;
 import com.springboot.project.onlineShop.model.Cart;
 import com.springboot.project.onlineShop.model.Customer;
 import com.springboot.project.onlineShop.service.CartService;

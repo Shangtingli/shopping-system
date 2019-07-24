@@ -29,6 +29,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+//TODO: cannot Solve customer mq
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes={ApplicationConfig.class, SecurityConfig.class, RabbitMQConfig.class})
 @WebAppConfiguration
@@ -70,32 +71,32 @@ public class RegistrationControllerTest {
 
     //TODO: Figure out the customer json Structure
 
-//    @Test
-//    public void create() throws Exception{
-//        mockMvc.perform(buildPostRequest("/customer/registration"))
-//                .andExpect(status().isCreated())
-//                .andExpect((ResultMatcher) content().contentType(MediaType.APPLICATION_JSON_UTF8));
-//    }
-//    private Customer getCustomer(){
-//        CustomerBasicBuilder builder = new CustomerBasicBuilder();
-//        builder.setFirst_name(FIRST_NAME);
-//        builder.setLast_name(LAST_NAME);
-//        builder.setAddress(ADDRESS);
-//        builder.setCity(CITY);
-//        builder.setCountry(COUNTRY);
-//        builder.setCustomer_email(EMAIL);
-//        builder.setCustomer_phone(PHONE);
-//        builder.setPassword(PASSWORD);
-//        builder.setState(STATE);
-//        builder.setZipcode(ZIPCODE);
-//        return builder.build();
-//    }
+    @Test
+    public void create() throws Exception{
+        mockMvc.perform(buildPostRequest("/customer/registration"))
+                .andExpect(status().isCreated())
+                .andExpect((ResultMatcher) content().contentType(MediaType.APPLICATION_JSON_UTF8));
+    }
+    private Customer getCustomer(){
+        CustomerBasicBuilder builder = new CustomerBasicBuilder();
+        builder.setFirstName(FIRST_NAME);
+        builder.setLastName(LAST_NAME);
+        builder.setAddress(ADDRESS);
+        builder.setCity(CITY);
+        builder.setCountry(COUNTRY);
+        builder.setCustomerEmail(EMAIL);
+        builder.setCustomerPhone(PHONE);
+        builder.setPassword(PASSWORD);
+        builder.setState(STATE);
+        builder.setZipcode(ZIPCODE);
+        return builder.build();
+    }
 
-//    private String toJson(Object object) throws JsonProcessingException{
-//        return new ObjectMapper().writeValueAsString(object);
-//    }
-//    private MockHttpServletRequestBuilder buildPostRequest(String path) throws JsonProcessingException {
-//        Customer customer = getCustomer();
-//        return post(path).content(toJson(customer)).contentType(MediaType.APPLICATION_PROBLEM_JSON_UTF8);
-//    }
+    private String toJson(Object object) throws JsonProcessingException{
+        return new ObjectMapper().writeValueAsString(object);
+    }
+    private MockHttpServletRequestBuilder buildPostRequest(String path) throws JsonProcessingException {
+        Customer customer = getCustomer();
+        return post(path).content(toJson(customer)).contentType(MediaType.APPLICATION_PROBLEM_JSON_UTF8);
+    }
 }
