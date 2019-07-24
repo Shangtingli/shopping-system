@@ -11,16 +11,16 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
-public class RabbitMQSender {
-    private static final Logger log = LoggerFactory.getLogger(RabbitMQSender.class);
+public class CustomerMQSender {
+    private static final Logger log = LoggerFactory.getLogger(CustomerMQSender.class);
 
     @Autowired
     private AmqpTemplate amqpTemplate;
 
-    @Value("${rabbit_mq_exchange}")
+    @Value("${customer_mq_exchange}")
     private String exchange;
 
-    @Value("${rabbit_mq_routing_key}")
+    @Value("${customer_mq_routing_key}")
     private String routingkey;
 
     public void send(Customer customer) {

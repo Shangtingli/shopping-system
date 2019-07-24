@@ -70,7 +70,8 @@ public class ProductController {
 
 	@RequestMapping(value = "/admin/product/addProduct", method = RequestMethod.GET)
 	public ModelAndView getProductForm() {
-		return new ModelAndView("addProduct", "productForm", new Product());
+
+    	return new ModelAndView("addProduct", "productForm", new Product());
 	}
 
 

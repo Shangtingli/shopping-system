@@ -14,9 +14,9 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class RabbitMQReceiver {
+public class CustomerMQReceiver {
 
-    private static final Logger log = LoggerFactory.getLogger(RabbitMQReceiver.class);
+    private static final Logger log = LoggerFactory.getLogger(CustomerMQReceiver.class);
     private static final int SLEEP_TIME = 60000;
     @Autowired
     private CustomerService customerService;
@@ -27,15 +27,13 @@ public class RabbitMQReceiver {
     @Autowired
     private EmailService emailService;
 
-    @RabbitListener(queues = "#{queue.name}")
+    @RabbitListener(queues = "#{queue1.name}")
     public void receiveMessage(final Message message) {
         log.info("Received Message {}", message.toString());
 
         CustomerBuilderFromMessage builder = new CustomerBuilderFromMessage();
         builder.setMessage(message);
         Customer customer = builder.build();
-        //TODO: The Email Cannot be sent (Timeout)
-//        emailService.send("shangtingli@outlook.com","Customer Registered", "A new Customer is registered");
         customerService.addCustomer(customer);
         authoritiesService.addAuthorities(new Authorities(null,customer.getUser().getEmailId(),"ROLE_USER"));
         log.info("Finished Adding Customers to Database");

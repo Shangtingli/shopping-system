@@ -2,7 +2,7 @@ package com.springboot.project.onlineShop.controller;
 
 import javax.validation.Valid;
 
-import com.springboot.project.onlineShop.amqp.RabbitMQSender;
+import com.springboot.project.onlineShop.amqp.CustomerMQSender;
 import com.springboot.project.onlineShop.model.Authorities;
 import com.springboot.project.onlineShop.model.Cart;
 import com.springboot.project.onlineShop.model.Customer;
@@ -27,7 +27,7 @@ public class RegistrationController {
 	private static final Logger log = LoggerFactory.getLogger(RegistrationController.class);
 
 	@Autowired
-	private RabbitMQSender rabbitMQSender;
+	private CustomerMQSender rabbitMQSender;
 
 	@RequestMapping(value = "/customer/registration", method = RequestMethod.GET)
 	public ModelAndView getRegistrationForm() {

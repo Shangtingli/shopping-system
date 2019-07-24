@@ -12,29 +12,44 @@ import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 @Configuration
 public class RabbitMQConfig {
 
-    @Value("${rabbit_mq_queue}")
-    private String queueName;
+    @Value("${customer_mq_queue}")
+    private String customerQueueName;
 
     @Value("${rabbit_mq_exchange}")
     private String exchangeName;
 
-    @Value("${rabbit_mq_routing_key}")
-    private String routingKey;
+    @Value("${customer_mq_routing_key}")
+    private String customerRoutingKey;
+
+//    @Value("${product_mq_routing_key}")
+//    private String productRoutingKey;
+//
+//    @Value("${product_mq_queue}")
+//    private String productQueueName;
 
     @Bean
-    public Queue queue(){
-        return new Queue(queueName, false);
+    public Queue queue1(){
+        return new Queue(customerQueueName, false);
     }
 
+//    @Bean
+//    public Queue queue2(){
+//        return new Queue(productQueueName, false);
+//    }
     @Bean
     public DirectExchange exchange() {
         return new DirectExchange(exchangeName);
     }
 
     @Bean
-    public Binding binding(Queue queue, DirectExchange exchange) {
-        return BindingBuilder.bind(queue).to(exchange).with(routingKey);
+    public Binding binding1(Queue queue1, DirectExchange exchange) {
+        return BindingBuilder.bind(queue1).to(exchange).with(customerRoutingKey);
     }
+
+//    @Bean
+//    public Binding binding2(Queue queue2, DirectExchange exchange){
+//        return BindingBuilder.bind(queue2).to(exchange).with(productRoutingKey);
+//    }
 
     @Bean
     public MessageConverter jsonMessageConverter() {

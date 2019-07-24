@@ -56,7 +56,6 @@ public class CartItemController {
    	 CartItem cartItem = new CartItem();
    	 cartItem.setQuantity(1);
    	 cartItem.setProduct(product);
-   	 System.out.println(product);
    	 cartItem.setPrice(product.getProductPrice());
    	 cartItem.setCart(cart);
    	 cartItemService.addCartItem(cartItem);
