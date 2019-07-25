@@ -29,6 +29,12 @@ public class CartItemHighConcurrencyController  implements InitializingBean {
     @Autowired
     private ProductMQSender productMQSender;
 
+
+    @Autowired
+    private LogWriter logWriter;
+
+
+    //TODO: AfterPropertiesSet runs before @Before Annotated Class. Causes Inconsistency
     @Override
     public void afterPropertiesSet() throws Exception {
 
@@ -39,11 +45,17 @@ public class CartItemHighConcurrencyController  implements InitializingBean {
         for (Product product: productList) {
             redisService.set(Long.toString(product.getId()), product.getUnitStock());
         }
+        System.out.println("Hello");
     }
 
     @RequestMapping(value = "/cart/add/{customerId}/{productId}", method = RequestMethod.PUT)
     public String rob(@PathVariable(value = "productId") Long productId,
                       @PathVariable(value="customerId") Long customerId) {
+        long stock = redisService.decr(Long.toString(productId));
+        if (stock < 0){
+            logWriter.insert("Request Not Completed");
+            return "error/soldout";
+        }
         return productMQSender.send(new String[]{Long.toString(customerId),Long.toString(productId)});
     }
 }

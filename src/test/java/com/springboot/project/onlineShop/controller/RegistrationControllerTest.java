@@ -6,8 +6,8 @@ import com.springboot.project.onlineShop.config.ApplicationConfig;
 import com.springboot.project.onlineShop.config.RabbitMQConfig;
 import com.springboot.project.onlineShop.config.RedisConfig;
 import com.springboot.project.onlineShop.config.SecurityConfig;
+import com.springboot.project.onlineShop.controller.util.CustomersUtil;
 import com.springboot.project.onlineShop.model.Customer;
-import com.springboot.project.onlineShop.model.CustomerBuilder.CustomerBasicBuilder;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,7 +22,6 @@ import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilde
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import static com.springboot.project.onlineShop.controller.ControllerUtil.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -37,10 +36,13 @@ public class RegistrationControllerTest {
     @Autowired
     WebApplicationContext context;
 
+    private CustomersUtil customersUtil;
+
     private MockMvc mockMvc;
 
     @Before
     public void setUp(){
+        customersUtil = new CustomersUtil();
         mockMvc = MockMvcBuilders.webAppContextSetup(context).build();
     }
 
@@ -67,11 +69,10 @@ public class RegistrationControllerTest {
 
     private String toJson(Object object) throws JsonProcessingException{
         String str =  new ObjectMapper().writeValueAsString(object);
-
         return str;
     }
     private MockHttpServletRequestBuilder buildPostRequest(String path) throws JsonProcessingException {
-        Customer customer = getCustomer();
+        Customer customer = customersUtil.getRandomCustomer();
         customer.getCart().setCustomer(null);
         customer.getUser().setCustomer(null);
         customer.getShippingAddress().setCustomer(null);

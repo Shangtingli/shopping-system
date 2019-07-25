@@ -35,4 +35,9 @@ public class CustomerServiceImpl implements CustomerService {
         Optional optional = customerRepository.findById(id);
         return optional.isPresent() ? (Customer)optional.get(): null;
     }
+
+    @Override
+    public void removeAll() {
+        customerRepository.deleteAll();
+    }
 }

@@ -46,11 +46,6 @@ public class ProductMQReceiver {
         JSONArray obj = new JSONArray(new String(message.getBody()));
         Long customerId = Long.valueOf(obj.getString(0));
         Long productId = Long.valueOf(obj.getString(1));
-        long stock = redisService.decr(Long.toString(productId));
-        if (stock < 0) {
-            logWriter.insert("Request Not Completed");
-            return "redirect:/error/soldout";
-        }
         Customer customer = customerService.getCustomerById(customerId);
         Cart cart = customer.getCart();
         List<CartItem> cartItems = cart.getCartItem();
@@ -61,7 +56,7 @@ public class ProductMQReceiver {
                 cartItem.setQuantity(cartItem.getQuantity() + 1);
                 cartItem.setPrice(cartItem.getQuantity() * cartItem.getProduct().getProductPrice());
                 cartItemService.addCartItem(cartItem);
-                logWriter.insert("Request Completed");
+                logWriter.insert("Request Completed For Customer " + customerId);
                 return "redirect:/cart/getCartById";
             }
         }
@@ -72,7 +67,7 @@ public class ProductMQReceiver {
         cartItem.setPrice(product.getProductPrice());
         cartItem.setCart(cart);
         cartItemService.addCartItem(cartItem);
-        logWriter.insert("Request Completed");
+        logWriter.insert("Request Completed For Customer " + customerId);
         return "redirect:/cart/getCartById";
     }
 }

@@ -11,4 +11,6 @@ public interface CustomerService {
     void removeCustomerByUserName(String userName);
 
     Customer getCustomerById(Long id);
+
+    void removeAll();
 }
