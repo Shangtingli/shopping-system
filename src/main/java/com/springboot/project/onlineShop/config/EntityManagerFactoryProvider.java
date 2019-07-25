@@ -1,4 +1,4 @@
-package com.springboot.project.onlineShop.util;
+package com.springboot.project.onlineShop.config;
 import static org.eclipse.persistence.config.PersistenceUnitProperties.*;
 
 import org.eclipse.persistence.jpa.PersistenceProvider;

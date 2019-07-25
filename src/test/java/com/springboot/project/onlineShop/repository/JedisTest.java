@@ -1,4 +1,4 @@
-package com.springboot.project.onlineShop.trial;
+package com.springboot.project.onlineShop.repository;
 
 import org.junit.Test;
 import redis.clients.jedis.Jedis;

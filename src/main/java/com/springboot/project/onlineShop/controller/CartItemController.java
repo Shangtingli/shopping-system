@@ -20,7 +20,7 @@ import com.alibaba.fastjson.JSON;
 
 
 @Controller
-public class CartItemController implements InitializingBean {
+public class CartItemController{
     @Autowired
     private CartService cartService;
 
@@ -81,16 +81,5 @@ public class CartItemController implements InitializingBean {
    	 cartItemService.removeAllCartItems(cart);
     }
 
-	@Override
-	public void afterPropertiesSet() throws Exception {
 
-		List<Product> productList = productService.getAllProducts();
-		if (productList == null) {
-			return;
-		}
-		for (Product product: productList) {
-			redisService.set(Long.toString(product.getId()), product.getUnitStock());
-		}
-
-	}
 }

@@ -27,11 +27,10 @@ public class CustomerRepositoryCustomImpl implements CustomerRepositoryCustom {
         ParameterExpression<String> emailIdParameter = criteriaBuilder.parameter(String.class);
         criteriaQuery.select(userRoot)
                 .where(criteriaBuilder.equal(userRoot.get("email_id"), emailIdParameter));
-
         TypedQuery<User> query = entityManager.createQuery(criteriaQuery);
         query.setParameter(emailIdParameter, userName);
+//        List<User> listOfUsers = query.getResultList();
         List<User> listOfUsers = query.getResultList();
-
         if (listOfUsers.size() > 0){
             return listOfUsers.get(0).getCustomer();
         }

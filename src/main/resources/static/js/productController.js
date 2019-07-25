@@ -12,7 +12,7 @@ var app = angular.module("myapp", []).controller(
 			}
 
 			$scope.addToCart = function(productId) {
-				$http.put(BASE_PATH + "/cart/add/" + productId)
+				$http.put(BASE_PATH + "madness/cart/add/" + productId)
 						.success(function() {
 							alert("Added Successfully");
 						})

@@ -4,49 +4,35 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.springboot.project.onlineShop.config.ApplicationConfig;
 import com.springboot.project.onlineShop.config.RabbitMQConfig;
+import com.springboot.project.onlineShop.config.RedisConfig;
 import com.springboot.project.onlineShop.config.SecurityConfig;
 import com.springboot.project.onlineShop.model.Customer;
 import com.springboot.project.onlineShop.model.CustomerBuilder.CustomerBasicBuilder;
-import com.springboot.project.onlineShop.model.CustomerBuilder.CustomerBuilder;
-import com.springboot.project.onlineShop.model.CustomerBuilder.CustomerBuilderFactory;
-import com.springboot.project.onlineShop.service.CustomerService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import static org.springframework.test.web.client.match.MockRestRequestMatchers.content;
+import static com.springboot.project.onlineShop.controller.ControllerUtil.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 //TODO: cannot Solve customer mq
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes={ApplicationConfig.class, SecurityConfig.class, RabbitMQConfig.class})
+@ContextConfiguration(classes={RedisConfig.class, ApplicationConfig.class, SecurityConfig.class, RabbitMQConfig.class})
 @WebAppConfiguration
+@TestPropertySource("classpath:application-test.properties")
 public class RegistrationControllerTest {
-
-    private static final String FIRST_NAME = "Shangting";
-    private static final String LAST_NAME = "Li";
-    private static final String PHONE = "2174024361";
-    private static final String EMAIL = "shangtingli@outlook.com";
-    private static final String PASSWORD= "1234";
-
-    //Assumes shipping address is same as billing address
-    private static final String ADDRESS= "2595 South Hoover Street, Apt 111";
-    private static final String CITY = "Los Angeles";
-    private static final String STATE = "California";
-    private static final String ZIPCODE = "90007";
-    private static final String COUNTRY = "United States";
 
     @Autowired
     WebApplicationContext context;
@@ -63,40 +49,33 @@ public class RegistrationControllerTest {
         return get(path);
     }
 
-//    @Test
-//    public void getRegistrationPageIsOK() throws Exception {
-//        mockMvc.perform(get("/customer/registration"))
-//                .andExpect(status().isOk());
-//    }
-//
-//    //TODO: Figure out the customer json Structure
-//
-//    @Test
-//    public void create() throws Exception{
-//        mockMvc.perform(buildPostRequest("/customer/registration"))
-//                .andExpect(status().isCreated())
-//                .andExpect((ResultMatcher) content().contentType(MediaType.APPLICATION_JSON_UTF8));
-//    }
-    private Customer getCustomer(){
-        CustomerBasicBuilder builder = new CustomerBasicBuilder();
-        builder.setFirstName(FIRST_NAME);
-        builder.setLastName(LAST_NAME);
-        builder.setAddress(ADDRESS);
-        builder.setCity(CITY);
-        builder.setCountry(COUNTRY);
-        builder.setCustomerEmail(EMAIL);
-        builder.setCustomerPhone(PHONE);
-        builder.setPassword(PASSWORD);
-        builder.setState(STATE);
-        builder.setZipcode(ZIPCODE);
-        return builder.build();
+    @Test
+    public void getRegistrationPageIsOK() throws Exception {
+        mockMvc.perform(get("/customer/registration"))
+                .andExpect(status().isOk());
     }
 
+//    //TODO: Figure out the customer json Structure
+//
+    @Test
+    public void create() throws Exception{
+        mockMvc.perform(buildPostRequest("/customer/registration"))
+                .andExpect(status().isOk());
+
+    }
+
+
     private String toJson(Object object) throws JsonProcessingException{
-        return new ObjectMapper().writeValueAsString(object);
+        String str =  new ObjectMapper().writeValueAsString(object);
+
+        return str;
     }
     private MockHttpServletRequestBuilder buildPostRequest(String path) throws JsonProcessingException {
         Customer customer = getCustomer();
+        customer.getCart().setCustomer(null);
+        customer.getUser().setCustomer(null);
+        customer.getShippingAddress().setCustomer(null);
+        customer.getBillingAddress().setCustomer(null);
         return post(path).content(toJson(customer)).contentType(MediaType.APPLICATION_PROBLEM_JSON_UTF8);
     }
 }

@@ -25,7 +25,7 @@ public class Cart implements Serializable {
     private Customer customer;
 
     //Important: The reason why the cart item cannot be removed is the cascade type. Make it to remove.
-    @OneToMany(mappedBy = "cart", cascade = CascadeType.REMOVE,fetch=FetchType.EAGER,orphanRemoval = true)
+    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL,fetch=FetchType.EAGER,orphanRemoval = true)
     private List<CartItem> cart_item;
 
     @Column(name="total_price")
