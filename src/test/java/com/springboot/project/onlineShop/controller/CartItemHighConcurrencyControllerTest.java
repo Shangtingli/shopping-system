@@ -48,18 +48,9 @@ public class CartItemHighConcurrencyControllerTest {
     private WebApplicationContext context;
 
     @Autowired
-    private ProductService productService;
-
-    @Autowired
     private LogWriter logWriter;
 
-    private Customer customer;
-
-    private Product product;
-
-    private Long productId;
-
-    private int initialStock;
+    private Long productId = 1L;
 
     private CustomersUtil customersUtil;
     @Before
@@ -70,16 +61,16 @@ public class CartItemHighConcurrencyControllerTest {
             customerService.addCustomer(customer);
         }
 
-        product = new Product();
-        initialStock = CustomersUtil.UNIT_STOCK;
-        product.setUnitStock(CustomersUtil.UNIT_STOCK);
-        product.setProductManufacturer(CustomersUtil.PRODUCT_PRODUCER);
-        product.setProductCategory(CustomersUtil.CATEGORY);
-        product.setProductName(CustomersUtil.PRODUCT_NAME);
-        productService.addProduct(product);
-        List<Product> productsFromDB = productService.getAllProducts();
-        assert(productsFromDB.size() > 0);
-        productId = productsFromDB.get(0).getId();
+//        product = new Product();
+//        initialStock = CustomersUtil.UNIT_STOCK;
+//        product.setUnitStock(CustomersUtil.UNIT_STOCK);
+//        product.setProductManufacturer(CustomersUtil.PRODUCT_PRODUCER);
+//        product.setProductCategory(CustomersUtil.CATEGORY);
+//        product.setProductName(CustomersUtil.PRODUCT_NAME);
+//        productService.addProduct(product);
+//        List<Product> productsFromDB = productService.getAllProducts();
+//        assert(productsFromDB.size() > 0);
+//        productId = productsFromDB.get(0).getId();
     }
 
 
@@ -87,7 +78,7 @@ public class CartItemHighConcurrencyControllerTest {
     public void HighConcurrencyTestWhenRequestsGreaterThanUnitStock()
     {
         //Begin Madness
-        int numRequests = 20;
+        int numRequests = 100;
 
         try {
             for (int i = 0; i < numRequests; i++) {
@@ -98,16 +89,16 @@ public class CartItemHighConcurrencyControllerTest {
                 mockMvc.perform(put(path));
                 Thread.sleep(113);
             }
-//            assert(logWriter.getSuccess() + logWriter.getFailure() == numRequests);
-//            assert(logWriter.getSuccess() == initialStock);
+            logWriter.write();
+            assert(logWriter.getSuccess() + logWriter.getFailure() == numRequests);
+            assert(logWriter.getSuccess() == 20);
         }
         catch(Exception e){
             e.printStackTrace();
         }
         finally{
             customerService.removeAll();
-            productService.removeAll();
-            logWriter.write();
+//            productService.removeAll();
         }
 
     }

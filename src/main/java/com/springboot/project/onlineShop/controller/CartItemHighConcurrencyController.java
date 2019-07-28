@@ -2,6 +2,7 @@ package com.springboot.project.onlineShop.controller;
 
 import com.springboot.project.onlineShop.amqp.ProductMQSender;
 import com.springboot.project.onlineShop.model.*;
+import com.springboot.project.onlineShop.repository.ProductRepository;
 import com.springboot.project.onlineShop.service.CustomerService;
 import com.springboot.project.onlineShop.service.ProductService;
 import com.springboot.project.onlineShop.service.RedisService;
@@ -37,7 +38,6 @@ public class CartItemHighConcurrencyController  implements InitializingBean {
     //TODO: AfterPropertiesSet runs before @Before Annotated Class. Causes Inconsistency
     @Override
     public void afterPropertiesSet() throws Exception {
-
         List<Product> productList = productService.getAllProducts();
         if (productList == null) {
             return;
@@ -45,7 +45,8 @@ public class CartItemHighConcurrencyController  implements InitializingBean {
         for (Product product: productList) {
             redisService.set(Long.toString(product.getId()), product.getUnitStock());
         }
-        System.out.println("Hello");
+
+        System.out.println();
     }
 
     @RequestMapping(value = "/cart/add/{customerId}/{productId}", method = RequestMethod.PUT)

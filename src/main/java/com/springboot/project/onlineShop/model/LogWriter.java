@@ -10,7 +10,7 @@ import java.util.List;
 @Component
 public class LogWriter {
 
-    private static final String OUTPUT_PATH = "C:\\Users\\i514767\\Desktop\\logs.txt";
+    private static final String OUTPUT_PATH = "/Users/shangtingli/Desktop/log.txt";
 
     private List<String> logs = new ArrayList<>();
 
