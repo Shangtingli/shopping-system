@@ -13,12 +13,14 @@ import com.springboot.project.onlineShop.model.LogWriter;
 import com.springboot.project.onlineShop.model.Product;
 import com.springboot.project.onlineShop.service.CustomerService;
 import com.springboot.project.onlineShop.service.ProductService;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -28,8 +30,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.util.List;
-
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes={RedisConfig.class, ApplicationConfig.class, SecurityConfig.class, RabbitMQConfig.class})
@@ -45,14 +45,21 @@ public class CartItemHighConcurrencyControllerTest {
     private CustomerService customerService;
 
     @Autowired
+    private ProductService productService;
+
+    @Autowired
     private WebApplicationContext context;
 
     @Autowired
     private LogWriter logWriter;
 
-    private Long productId = 1L;
-
     private CustomersUtil customersUtil;
+
+    private Long productId;
+
+    @Value("${test-unit-stock}")
+    private int stock;
+
     @Before
     public void setUp(){
         customersUtil = new CustomersUtil();
@@ -60,52 +67,59 @@ public class CartItemHighConcurrencyControllerTest {
         for (Customer customer : customersUtil.getAllCustomers()) {
             customerService.addCustomer(customer);
         }
-
-//        product = new Product();
-//        initialStock = CustomersUtil.UNIT_STOCK;
-//        product.setUnitStock(CustomersUtil.UNIT_STOCK);
-//        product.setProductManufacturer(CustomersUtil.PRODUCT_PRODUCER);
-//        product.setProductCategory(CustomersUtil.CATEGORY);
-//        product.setProductName(CustomersUtil.PRODUCT_NAME);
-//        productService.addProduct(product);
-//        List<Product> productsFromDB = productService.getAllProducts();
-//        assert(productsFromDB.size() > 0);
-//        productId = productsFromDB.get(0).getId();
+        List<Product> products = productService.getAllProducts();
+        assert(products.size() == 1);
+        Product product = products.get(0);
+        assert(product.getUnitStock() == stock);
+        productId = product.getId();
     }
 
 
+//    @Test
+//    public void HighConcurrencyTestWhenRequestsGreaterThanUnitStock()
+//    {
+//        //Begin Madness
+//        int numRequests = 100;
+//        processRequests(numRequests);
+//    }
+
     @Test
-    public void HighConcurrencyTestWhenRequestsGreaterThanUnitStock()
+    public void HighConcurrencyTestWhenRequestsSmallerThanUnitStock()
     {
         //Begin Madness
-        int numRequests = 100;
+        int numRequests = 10;
+        processRequests(numRequests);
 
+
+    }
+
+    public void processRequests(int numRequests){
         try {
             for (int i = 0; i < numRequests; i++) {
                 Customer customer = customersUtil.getRandomCustomer();
                 Long customerId = customer.getId();
                 String path = "/madness/cart/add/"+ customerId+ "/" + productId;
                 logWriter.insert("Sending Request for customer "  + customer.getId() +  ", RequestNumber: "+ i);
+//                Thread.sleep(113);
                 mockMvc.perform(put(path));
-                Thread.sleep(113);
+
             }
             logWriter.write();
             assert(logWriter.getSuccess() + logWriter.getFailure() == numRequests);
-            assert(logWriter.getSuccess() == 20);
+            assert(logWriter.getSuccess() == numRequests);
         }
         catch(Exception e){
             e.printStackTrace();
         }
-        finally{
-            customerService.removeAll();
+//        finally{
+//            customerService.removeAll();
 //            productService.removeAll();
-        }
-
+//        }
     }
-//
-//    @After
-//    public void DestroyData(){
-//        customerService.removeCustomerByUserName(ControllerUtil.EMAIL);
-//        productService.deleteProduct(productId);
-//    }
+
+    @After
+    public void destroy(){
+        customerService.removeAll();
+        productService.removeAll();
+    }
 }

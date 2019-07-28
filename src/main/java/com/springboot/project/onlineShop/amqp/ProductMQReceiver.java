@@ -1,11 +1,9 @@
 package com.springboot.project.onlineShop.amqp;
 
 import com.springboot.project.onlineShop.model.*;
-import com.springboot.project.onlineShop.model.CustomerBuilder.CustomerBuilderFromMessage;
 import com.springboot.project.onlineShop.service.*;
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.Message;
@@ -18,9 +16,6 @@ import java.util.List;
 @Component
 public class ProductMQReceiver {
     private static final Logger log = LoggerFactory.getLogger(ProductMQReceiver.class);
-
-    @Autowired
-    private RedisService redisService;
 
     @Autowired
     private CustomerService customerService;
@@ -39,7 +34,7 @@ public class ProductMQReceiver {
 //        log.info("Received Message {}", message.toString());
         //Well...
         try {
-            Thread.sleep(231);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

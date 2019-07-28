@@ -65,10 +65,6 @@ public class CustomersUtil {
             "United States","United States","United States"
     };
 
-    public static final String PRODUCT_NAME = "Love";
-    public static final String PRODUCT_PRODUCER = "God";
-    public static final int UNIT_STOCK = 10;
-    public static final String CATEGORY = "UNVALUED";
 
     public List<Customer> getAllCustomers() {
         return customers;
