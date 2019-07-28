@@ -99,7 +99,6 @@ public class CartItemHighConcurrencyControllerTest {
                 Customer customer = customersUtil.getRandomCustomer();
                 Long customerId = customer.getId();
                 String path = "/madness/cart/add/"+ customerId+ "/" + productId;
-                logWriter.insert("Sending Request for customer "  + customer.getId() +  ", RequestNumber: "+ i);
 //                Thread.sleep(113);
                 mockMvc.perform(put(path));
 

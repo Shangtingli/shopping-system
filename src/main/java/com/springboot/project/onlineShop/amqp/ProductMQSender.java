@@ -1,6 +1,7 @@
 package com.springboot.project.onlineShop.amqp;
 
 import com.springboot.project.onlineShop.model.Customer;
+import com.springboot.project.onlineShop.model.LogWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.AmqpTemplate;
@@ -16,6 +17,9 @@ public class ProductMQSender {
     @Autowired
     private AmqpTemplate amqpTemplate;
 
+    @Autowired
+    private LogWriter logWriter;
+
     @Value("${rabbit_mq_exchange}")
     private String exchange;
 
@@ -24,6 +28,7 @@ public class ProductMQSender {
 
     public String send(String[] ids) {
         Object res = amqpTemplate.convertSendAndReceive(exchange, routingkey, ids);
+        logWriter.insert("Sending Request for customer " + ids[1]);
         return (String)res;
 //        log.info("Message Sent For {}:" + customerProductDto.getCustomer());
     }
