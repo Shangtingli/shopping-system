@@ -26,7 +26,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-//TODO: cannot Solve customer mq
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes={RedisConfig.class, ApplicationConfig.class, SecurityConfig.class, RabbitMQConfig.class})
 @WebAppConfiguration
@@ -57,8 +56,6 @@ public class RegistrationControllerTest {
                 .andExpect(status().isOk());
     }
 
-//    //TODO: Figure out the customer json Structure
-//
     @Test
     public void create() throws Exception{
         mockMvc.perform(buildPostRequest("/customer/registration"))

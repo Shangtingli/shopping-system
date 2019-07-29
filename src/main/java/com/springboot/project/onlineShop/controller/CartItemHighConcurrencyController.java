@@ -40,7 +40,6 @@ public class CartItemHighConcurrencyController  implements InitializingBean {
     @Value("${test-unit-stock}")
     private int stock;
 
-    //TODO: AfterPropertiesSet runs before @Before Annotated Class. Causes Inconsistency
     @Override
     public void afterPropertiesSet() throws Exception {
         Product product_test = new Product();

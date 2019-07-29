@@ -22,7 +22,6 @@ public class User implements Serializable {
     private String password;
 
 
-    //TODO: Invalidate function, in the future
     @Column(name="enabled")
     private boolean enabled = true;
 

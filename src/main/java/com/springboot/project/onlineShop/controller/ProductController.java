@@ -85,7 +85,6 @@ public class ProductController {
    	 MultipartFile image = product.getProductImage();
 
    	 if (image != null && !image.isEmpty()) {
-   		 //TODO: Probably Needs to Store the image on server side
    		 Path path = Paths.get("/Users/shangtingli/Desktop/PROJECT/onlineShop/target/onlineShop/WEB-INF/resource/images/" + image.getOriginalFilename() + ".jpg");
 
 

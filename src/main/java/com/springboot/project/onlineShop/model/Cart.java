@@ -8,7 +8,6 @@ import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
-//TODO: Figure out why the cart does not contain information about customers
 @Entity
 @Table(name = "cart")
 public class Cart implements Serializable {
