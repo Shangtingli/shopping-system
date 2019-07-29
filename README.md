@@ -12,7 +12,7 @@ mvn spring-boot:run
 
 ## Project Architecture for Registration Process
 
-* ![readme image](./images/CustomerMQ.png "Readme Image")
+ ![readme image](./images/CustomerMQ.png "Readme Image")
 
 
 ## Project Architecture for High Concurrent Request for Products
