@@ -28,7 +28,6 @@ public class ProductMQSender {
 
     public String send(String[] ids) {
         Object res = amqpTemplate.convertSendAndReceive(exchange, routingkey, ids);
-        logWriter.insert("Sending Request for customer " + ids[1]);
         return (String)res;
 //        log.info("Message Sent For {}:" + customerProductDto.getCustomer());
     }

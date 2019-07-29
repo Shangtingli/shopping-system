@@ -29,18 +29,29 @@ public class ProductMQReceiver {
     @Autowired
     private LogWriter logWriter;
 
+    @Autowired
+    private RedisService redisService;
+
     @RabbitListener(queues = "#{queue2.name}")
     public String receiveMessage(final Message message) throws JSONException {
 //        log.info("Received Message {}", message.toString());
         //Well...
+
+
+        JSONArray obj = new JSONArray(new String(message.getBody()));
+        Long customerId = Long.valueOf(obj.getString(0));
+        Long productId = Long.valueOf(obj.getString(1));
+        long stock = redisService.decr(Long.toString(productId));
+        if (stock < 0){
+            logWriter.insert("Request Not Completed");
+            return "error/soldout";
+        }
+
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        JSONArray obj = new JSONArray(new String(message.getBody()));
-        Long customerId = Long.valueOf(obj.getString(0));
-        Long productId = Long.valueOf(obj.getString(1));
         Customer customer = customerService.getCustomerById(customerId);
         Cart cart = customer.getCart();
         List<CartItem> cartItems = cart.getCartItem();

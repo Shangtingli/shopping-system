@@ -65,11 +65,8 @@ public class CartItemHighConcurrencyController  implements InitializingBean {
     @RequestMapping(value = "/cart/add/{customerId}/{productId}", method = RequestMethod.PUT)
     public String rob(@PathVariable(value = "productId") Long productId,
                       @PathVariable(value="customerId") Long customerId) {
-        long stock = redisService.decr(Long.toString(productId));
-        if (stock < 0){
-            logWriter.insert("Request Not Completed");
-            return "error/soldout";
-        }
-        return productMQSender.send(new String[]{Long.toString(customerId),Long.toString(productId)});
+        String response = productMQSender.send(new String[]{Long.toString(customerId),Long.toString(productId)});
+        logWriter.insert("Message for Customer " + customerId + " for " + productId + " sent");
+        return response;
     }
 }

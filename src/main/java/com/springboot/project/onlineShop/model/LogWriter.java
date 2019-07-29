@@ -10,7 +10,8 @@ import java.util.List;
 @Component
 public class LogWriter {
 
-    private static final String OUTPUT_PATH = "/Users/shangtingli/Desktop/log.txt";
+//    private static final String OUTPUT_PATH = "/Users/shangtingli/Desktop/log.txt";
+    private static final String OUTPUT_PATH = "C:\\Users\\i514767\\Desktop\\log.txt";
 
     private List<String> logs = new ArrayList<>();
 
@@ -51,7 +52,10 @@ public class LogWriter {
             fw.write("Success: " + success + "\n");
             fw.write("Failure: " + failure + "\n");
             fw.close();
-        }catch(Exception e){System.out.println(e);}
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
 }

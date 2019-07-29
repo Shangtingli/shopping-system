@@ -75,23 +75,23 @@ public class CartItemHighConcurrencyControllerTest {
     }
 
 
-//    @Test
-//    public void HighConcurrencyTestWhenRequestsGreaterThanUnitStock()
-//    {
-//        //Begin Madness
-//        int numRequests = 100;
-//        processRequests(numRequests);
-//    }
-
     @Test
-    public void HighConcurrencyTestWhenRequestsSmallerThanUnitStock()
+    public void HighConcurrencyTestWhenRequestsGreaterThanUnitStock()
     {
         //Begin Madness
-        int numRequests = 10;
+        int numRequests = 30;
         processRequests(numRequests);
-
-
     }
+
+//    @Test
+//    public void HighConcurrencyTestWhenRequestsSmallerThanUnitStock()
+//    {
+//        //Begin Madness
+//        int numRequests = 10;
+//        processRequests(numRequests);
+//
+//
+//    }
 
     public void processRequests(int numRequests){
         try {
@@ -105,7 +105,6 @@ public class CartItemHighConcurrencyControllerTest {
             }
             logWriter.write();
             assert(logWriter.getSuccess() + logWriter.getFailure() == numRequests);
-            assert(logWriter.getSuccess() == numRequests);
         }
         catch(Exception e){
             e.printStackTrace();
