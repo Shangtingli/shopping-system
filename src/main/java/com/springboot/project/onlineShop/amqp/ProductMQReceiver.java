@@ -7,6 +7,7 @@ import org.json.JSONException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.Message;
+import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -33,7 +34,7 @@ public class ProductMQReceiver {
     private RedisService redisService;
 
     @RabbitListener(queues = "#{queue2.name}")
-    public String receiveMessage(final Message message) throws JSONException {
+    public void receiveMessage(final Message message) throws JSONException {
 //        log.info("Received Message {}", message.toString());
         //Well...
 
@@ -44,14 +45,15 @@ public class ProductMQReceiver {
         long stock = redisService.decr(Long.toString(productId));
         if (stock < 0){
             logWriter.insert("Request Not Completed");
-            return "error/soldout";
+            return;
         }
 
         try {
-            Thread.sleep(1000);
+            Thread.sleep(20);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
         Customer customer = customerService.getCustomerById(customerId);
         Cart cart = customer.getCart();
         List<CartItem> cartItems = cart.getCartItem();
@@ -63,7 +65,7 @@ public class ProductMQReceiver {
                 cartItem.setPrice(cartItem.getQuantity() * cartItem.getProduct().getProductPrice());
                 cartItemService.addCartItem(cartItem);
                 logWriter.insert("Request Completed For Customer " + customerId);
-                return "redirect:/cart/getCartById";
+                return;
             }
         }
 
@@ -74,6 +76,6 @@ public class ProductMQReceiver {
         cartItem.setCart(cart);
         cartItemService.addCartItem(cartItem);
         logWriter.insert("Request Completed For Customer " + customerId);
-        return "redirect:/cart/getCartById";
+        return;
     }
 }

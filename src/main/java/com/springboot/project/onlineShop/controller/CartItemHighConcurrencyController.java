@@ -62,10 +62,11 @@ public class CartItemHighConcurrencyController  implements InitializingBean {
     }
 
     @RequestMapping(value = "/cart/add/{customerId}/{productId}", method = RequestMethod.PUT)
+    @ResponseBody
     public String rob(@PathVariable(value = "productId") Long productId,
                       @PathVariable(value="customerId") Long customerId) {
-        String response = productMQSender.send(new String[]{Long.toString(customerId),Long.toString(productId)});
-        logWriter.insert("Message for Customer " + customerId + " for " + productId + " sent");
-        return response;
+        productMQSender.send(new String[]{Long.toString(customerId),Long.toString(productId)});
+
+        return "Still Processing Your Request...";
     }
 }

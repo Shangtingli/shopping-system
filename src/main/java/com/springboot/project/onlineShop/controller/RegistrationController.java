@@ -48,7 +48,7 @@ public class RegistrationController {
 		rabbitMQSender.send(customer);
 
     	modelAndView.addObject("registrationSuccess", "Registered Successfully. Login using username and password. You would receive an email about this.");
-    	modelAndView.setViewName("login");
+		modelAndView.setViewName("login");
 
     	log.info("Success in generating view at a responsive speed");
     	return modelAndView;

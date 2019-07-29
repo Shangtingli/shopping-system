@@ -26,9 +26,10 @@ public class ProductMQSender {
     @Value("${product_mq_routing_key}")
     private String routingkey;
 
-    public String send(String[] ids) {
-        Object res = amqpTemplate.convertSendAndReceive(exchange, routingkey, ids);
-        return (String)res;
+    public void send(String[] ids) {
+        amqpTemplate.convertAndSend(exchange, routingkey, ids);
+        logWriter.insert("Message for Customer " + ids[0] + " for " + ids[1] + " sent");
+//        return;
 //        log.info("Message Sent For {}:" + customerProductDto.getCustomer());
     }
 }

@@ -22,7 +22,7 @@ public class CartItemRepositoryTest {
         CartItem cartItem = new CartItem();
         cartItemRepository.save(cartItem);
         assert(((List<CartItem>)cartItemRepository.findAll()).size() == 1);
-        cartItemRepository.deleteById(new Long(1));
+        cartItemRepository.deleteById(1L);
         assert(((List<CartItem>)cartItemRepository.findAll()).size() == 0);
     }
 }
