@@ -4,6 +4,7 @@ A maven web project that mimics the online shopping process. Supports Register, 
 ## Branches
 * master: Classic Spring MVC + WebFlow + Security
 * boot: SpringBoot + MVC + WebFlow + Security
+* redis: Use Redis as cache for product information, rabbitmq as message queues to process massive concurrent requests.
 
 ## Usage:
 ```r
