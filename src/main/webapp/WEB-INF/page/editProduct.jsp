@@ -10,7 +10,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Edit Product</title>
-<link rel="icon" type="image/x-icon" href="<c:url value="/renders/favicon.png"/>" />
+<link rel="icon" type="image/x-icon" href="<c:url value="/images/favicon.png"/>" />
 <link rel="stylesheet" href="<c:url value="/bootstrap/css/bootstrap.min.css"/>">
 <script src="<c:url value="/js/jquery.js"/>"></script>
 <script src="<c:url value="/bootstrap/js/bootstrap.min.js"/>"></script>

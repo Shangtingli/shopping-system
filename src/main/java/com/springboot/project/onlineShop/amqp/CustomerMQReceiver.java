@@ -32,6 +32,12 @@ public class CustomerMQReceiver {
     public void receiveMessage(final Message message) {
         log.info("Received Message {}", message.toString());
 
+        try{
+            Thread.sleep(20000);
+        }
+        catch(InterruptedException e){
+            e.printStackTrace();
+        }
         CustomerBuilderFromMessage builder = new CustomerBuilderFromMessage();
         builder.setMessage(message);
         Customer customer = builder.build();

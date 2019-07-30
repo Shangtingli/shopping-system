@@ -13,12 +13,12 @@ mvn spring-boot:run
 
 ## Project Architecture for Registration Process
 
- ![readme image](renders/CustomerMQ.png "Readme Image")
+ ![readme image](assets/CustomerMQ.png "Readme Image")
 
 
 ## Project Architecture for High Concurrent Request for Products
 
-![readme image](renders/ProductMQ.png "Readme Image")
+![readme image](assets/ProductMQ.png "Readme Image")
 
 ## High Concurrent Product Requests Scenario
 
@@ -35,12 +35,12 @@ mvn spring-boot:run
 * We can see that the results are synchronous with the database results as follow:
 
 (1) The cart Item Table
-![readme image](renders/CartItemTable.png "Readme Image")
+![readme image](assets/CartItemTable.png "Readme Image")
 
 
 (2) The Customer Table
-![readme image](renders/CustomerTable.png "Readme Image")
+![readme image](assets/CustomerTable.png "Readme Image")
 
 * Also, the message queue rates are as follow:
 
-![readme image](renders/RabbitQueueRate.png "Readme Image")
+![readme image](assets/RabbitQueueRate.png "Readme Image")

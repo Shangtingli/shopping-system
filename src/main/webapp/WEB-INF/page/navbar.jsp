@@ -8,7 +8,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <link rel="icon" type="image/x-icon" href="<c:url value="/renders/favicon.png"/>"/>
+    <link rel="icon" type="image/x-icon" href="<c:url value="/images/favicon.png"/>"/>
     <link rel="stylesheet"
           href="<c:url value="/bootstrap/css/bootstrap.min.css"/>">
     <script src="<c:url value="/js/jquery.js"/>"></script>
@@ -23,7 +23,7 @@
     <div class="container-fluid">
 
         <div class="nav navbar">
-            <img src="<c:url value="/renders/logo.png"/>"
+            <img src="<c:url value="/images/logo.png"/>"
                  width="200px" height="100px"
                  alt="logo-image">
             </img>

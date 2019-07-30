@@ -13,6 +13,7 @@ import com.springboot.project.onlineShop.util.LogWriter;
 import com.springboot.project.onlineShop.model.Product;
 import com.springboot.project.onlineShop.service.CustomerService;
 import com.springboot.project.onlineShop.service.ProductService;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -85,8 +86,6 @@ public class CartItemHighConcurrencyControllerTest {
         assert(product.getUnitStock() == stock);
         productId = product.getId();
     }
-
-
     //Important: Need to give the server enough time to complete the requests in queue.
     // When the test is over, the mockMVC serer would be down.
     @Test
@@ -104,8 +103,11 @@ public class CartItemHighConcurrencyControllerTest {
         }
 
         logWriter.write();
-//        customerService.removeAll();
-//        productService.removeAll();
+
+        //====Comment These Two Lines if you want to see if database records synchronizes===
+        customerService.removeAll();
+        productService.removeAll();
+        //==================================================================================
     }
 
 //    @Test
@@ -138,9 +140,8 @@ public class CartItemHighConcurrencyControllerTest {
         }
     }
 
-//    @After
-//    public void destroy(){
-//        customerService.removeAll();
-//        productService.removeAll();
-//    }
+    @After
+    public void destroy(){
+        customerService.removeAll();
+    }
 }
