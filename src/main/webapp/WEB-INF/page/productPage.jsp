@@ -11,7 +11,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Products</title>
-<link rel="icon" type="image/x-icon" href="<c:url value="/images/favicon.png"/>" />
+<link rel="icon" type="image/x-icon" href="<c:url value="/renders/favicon.png"/>" />
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <script src="<c:url value="/js/productController.js"/>"></script>
 </head>

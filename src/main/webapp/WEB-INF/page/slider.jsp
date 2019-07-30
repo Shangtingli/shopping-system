@@ -62,23 +62,23 @@
 				<!-- Wrapper for slides -->
 				<div class="carousel-inner" role="listbox">
 					<div class="item active">
-						<img src="<c:url value="/images/pixel.jpg"/>" style="width:100%;" alt="Image1">
+						<img src="<c:url value="/renders/pixel.jpg"/>" style="width:100%;" alt="Image1">
 					</div>
 
 					<div class="item">
-						<img src="<c:url value="/images/iphone.jpg"/>" style="width:100%;" alt="Image2" >
+						<img src="<c:url value="/renders/iphone.jpg"/>" style="width:100%;" alt="Image2" >
 					</div>
 
 					<div class="item">
-						<img src="<c:url value="/images/oppo2.jpg"/>" style="width:100%;" alt="Image3">
+						<img src="<c:url value="/renders/oppo2.jpg"/>" style="width:100%;" alt="Image3">
 					</div>
 
 					<div class="item">
-						<img src="<c:url value="/images/samsung.jpg"/>" style="width:100%;" alt="Image4">
+						<img src="<c:url value="/renders/samsung.jpg"/>" style="width:100%;" alt="Image4">
 					</div>
 
 					<div class="item">
-						<img src="<c:url value="/images/buy.jpg"/>" style="width:100%;" alt="Image5">
+						<img src="<c:url value="/renders/buy.jpg"/>" style="width:100%;" alt="Image5">
 					</div>
 				</div>
 

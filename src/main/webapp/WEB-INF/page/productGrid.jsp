@@ -29,7 +29,7 @@
 <hr>
 <div class="w3-row-padding" style="padding:0px 30px; margin-bottom: 20px">
     <div class="w3-third w3-container w3-margin-bottom">
-        <img src="<c:url value="/images/products/oppo.jpg"/>" alt="Norway" style="width: 100%"
+        <img src="<c:url value="/renders/products/oppo.jpg"/>" alt="Norway" style="width: 100%"
              class="w3-hover-opacity">
         <div class="w3-container w3-white">
             <p>
@@ -47,7 +47,7 @@
     </div>
 
     <div class="w3-third w3-container w3-margin-bottom">
-        <img src="<c:url value="/images/products/vivo.jpg"/>" alt="Norway" style="width: 100%"
+        <img src="<c:url value="/renders/products/vivo.jpg"/>" alt="Norway" style="width: 100%"
              class="w3-hover-opacity">
         <div class="w3-container w3-white">
             <p>
@@ -64,7 +64,7 @@
         </div>
     </div>
     <div class="w3-third w3-container w3-margin-bottom">
-        <img src="<c:url value="/images/products/samsung.jpg"/>" alt="Norway" style="width: 100%"
+        <img src="<c:url value="/renders/products/samsung.jpg"/>" alt="Norway" style="width: 100%"
              class="w3-hover-opacity">
         <div class="w3-container w3-white">
             <p>
@@ -85,7 +85,7 @@
 <hr>
 <div class="w3-row-padding" style="padding:0px 30px; margin-bottom: 20px">
     <div class="w3-third w3-container w3-margin-bottom">
-        <img src="<c:url value="/images/products/pixel.jpg"/>" alt="Norway" style="width: 100%"
+        <img src="<c:url value="/renders/products/pixel.jpg"/>" alt="Norway" style="width: 100%"
              class="w3-hover-opacity">
         <div class="w3-container w3-white">
             <p>
@@ -103,7 +103,7 @@
     </div>
 
     <div class="w3-third w3-container w3-margin-bottom">
-        <img src="<c:url value="/images/products/iphonex.jpg"/>" alt="Norway" style="width: 100%"
+        <img src="<c:url value="/renders/products/iphonex.jpg"/>" alt="Norway" style="width: 100%"
              class="w3-hover-opacity">
         <div class="w3-container w3-white">
             <p>
@@ -120,7 +120,7 @@
         </div>
     </div>
     <div class="w3-third w3-container w3-margin-bottom">
-        <img src="<c:url value="/images/products/huawei.jpg"/>" alt="Norway" style="width: 100%"
+        <img src="<c:url value="/renders/products/huawei.jpg"/>" alt="Norway" style="width: 100%"
              class="w3-hover-opacity">
         <div class="w3-container w3-white">
             <p>

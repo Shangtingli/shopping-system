@@ -3,9 +3,7 @@ package com.springboot.project.onlineShop.util;
 import org.springframework.stereotype.Component;
 
 import java.io.FileWriter;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 @Component
 public class LogWriter {
@@ -16,6 +14,8 @@ public class LogWriter {
     private List<String> logs = new ArrayList<>();
 
     private List<String> status = new ArrayList<>();
+
+    private Map<String,Integer> cartItemCounts = new HashMap<>();
 
     private int success = -1, failure = -1;
 
@@ -33,6 +33,12 @@ public class LogWriter {
             status.add("Failed");
         }
         else if (str.startsWith("Request Completed For Customer")){
+            String temp = str;
+            temp.replace("Request Completed For Customer", "");
+            if (!cartItemCounts.containsKey(temp)){
+                cartItemCounts.put(temp,0);
+            }
+            cartItemCounts.put(temp,cartItemCounts.get(temp)+1);
             status.add("Success");
         }
         else{
@@ -46,13 +52,18 @@ public class LogWriter {
             FileWriter fw=new FileWriter(OUTPUT_PATH);
             for (int i=0; i < logs.size(); i++){
                 String log = logs.get(i);
-                fw.write("" + i + "." + log + "\n");
+                fw.write("Event " + i + ":  " + log + "\n");
             }
             success = Collections.frequency(status,"Success");
             failure = Collections.frequency(status,"Failed");
             fw.write("\n");
             fw.write("Success: " + success + "\n");
             fw.write("Failure: " + failure + "\n");
+            fw.write("\n");
+            for (Map.Entry<String,Integer> entry : cartItemCounts.entrySet()){
+                String toWrite = "Customer " + entry.getKey() + " gets : " + entry.getValue()+ " products.\n";
+                fw.write(toWrite);
+            }
             fw.close();
         }catch(Exception e) {
             e.printStackTrace();

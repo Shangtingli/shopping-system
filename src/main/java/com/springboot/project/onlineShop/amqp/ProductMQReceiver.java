@@ -48,7 +48,7 @@ public class ProductMQReceiver {
         Long productId = Long.valueOf(obj.getString(1));
         long stock = redisService.decr(Long.toString(productId));
         if (stock < 0){
-            logWriter.insert("Request Not Completed");
+            logWriter.insert("Request for " + customerId + " Not Completed");
             return;
         }
 

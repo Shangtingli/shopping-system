@@ -80,29 +80,28 @@ public class CartItemHighConcurrencyControllerTest {
         Product product = products.get(0);
         assert(product.getUnitStock() == stock);
         productId = product.getId();
-
-//        List<Customer> customers = customerService.getAllCustomers();
     }
 
 
     //Important: Need to give the server enough time to complete the requests in queue.
     // When the test is over, the mockMVC serer would be down.
     @Test
-    public void HighConcurrencyTestWhenRequestsGreaterThanUnitStock()
+    public void HighConcurrencyTest()
     {
         processRequests();
-        int time = num_requests * process_time;
-        log.info("Sleeping for {} seconds for receiver part to finish", time / 1000);
-        try{
-            Thread.sleep(time);
-        }
-        catch(InterruptedException e){
-            e.printStackTrace();
+        if (process_time > request_interval) {
+            int time = num_requests * process_time;
+            log.info("Sleeping for {} seconds for receiver part to finish", time / 1000);
+            try {
+                Thread.sleep(time);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
 
         logWriter.write();
-        customerService.removeAll();
-        productService.removeAll();
+//        customerService.removeAll();
+//        productService.removeAll();
     }
 
 //    @Test
@@ -129,15 +128,10 @@ public class CartItemHighConcurrencyControllerTest {
                 mockMvc.perform(put(path));
 
             }
-//            assert(logWriter.getSuccess() + logWriter.getFailure() == numRequests);
         }
         catch(Exception e){
             e.printStackTrace();
         }
-//        finally{
-//            customerService.removeAll();
-//            productService.removeAll();
-//        }
     }
 
 //    @After
