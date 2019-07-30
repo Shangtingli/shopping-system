@@ -57,7 +57,6 @@ public class ProductMQReceiver {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
         Customer customer = customerService.getCustomerById(customerId);
         Cart cart = customer.getCart();
         List<CartItem> cartItems = cart.getCartItem();

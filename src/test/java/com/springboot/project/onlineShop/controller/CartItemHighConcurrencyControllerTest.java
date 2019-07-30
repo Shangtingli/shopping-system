@@ -68,6 +68,10 @@ public class CartItemHighConcurrencyControllerTest {
     @Value("${num_requests}")
     private int num_requests;
 
+
+    /**
+     * Best to empty the database before running the test
+     */
     @Before
     public void setUp(){
         customersUtil = new CustomersUtil();

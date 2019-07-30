@@ -9,7 +9,7 @@ import java.util.*;
 public class LogWriter {
 
 //    private static final String OUTPUT_PATH = "/Users/shangtingli/Desktop/log.txt";
-    private static final String OUTPUT_PATH = "C:\\Users\\i514767\\Desktop\\log.txt";
+    private static final String OUTPUT_PATH = "renders/example_log.txt";
 
     private List<String> logs = new ArrayList<>();
 
@@ -29,7 +29,7 @@ public class LogWriter {
 
 
     public void insert(String str){
-        if (str.equals("Request Not Completed")){
+        if (str.endsWith("Not Completed")){
             status.add("Failed");
         }
         else if (str.startsWith("Request Completed For Customer")){

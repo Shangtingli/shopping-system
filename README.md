@@ -27,7 +27,7 @@ mvn spring-boot:run
 
 * Use RabbitMQ to deal with high rate of requests: Requests are processed in the order they arrived at the message queues.
 
-* To see an example, run **HighConcurrencyTest** in *CartItemHighConcurrencyTest.java*. In this scenario, we have three customers sending requests at an average rate of 235 milliseconds, with total of 50 requests competing for 30 products, and the process time for a request is 1007 milliseconds (Just let the thread to sleep, actually could be much faster.
+* To see an example, run **HighConcurrencyTest** in *CartItemHighConcurrencyControllerTest.java*. In this scenario, we have three customers sending requests at an average rate of 235 milliseconds, with total of 50 requests competing for 30 products, and the process time for a request is 1007 milliseconds (Just let the thread to sleep, actually could be much faster.
 
 * The log file generated from this test is <a href="https://github.com/Shangtingli/shopping-system/blob/redis/renders/example_log.txt">here </a>.
 
