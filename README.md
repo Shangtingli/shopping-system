@@ -33,7 +33,7 @@ mvn spring-boot:run
 
 * We can see that the results are synchronous with the database results as follow:
 
-![readme image](renders/Databaes.png "Readme Image")
+![readme image](renders/Database.png "Readme Image")
 
 * Also, the message queue rates are as follow:
 
