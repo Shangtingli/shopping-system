@@ -23,9 +23,9 @@ public class LogWriter {
         return success;
     }
 
-    public int getFailure() {
-        return failure;
-    }
+//    public int getFailure() {
+//        return failure;
+//    }
 
 
     public void insert(String str){
@@ -33,8 +33,7 @@ public class LogWriter {
             status.add("Failed");
         }
         else if (str.startsWith("Request Completed For Customer")){
-            String temp = str;
-            temp.replace("Request Completed For Customer", "");
+            String temp = str.replace("Request Completed For Customer", "");
             if (!cartItemCounts.containsKey(temp)){
                 cartItemCounts.put(temp,0);
             }
