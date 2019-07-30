@@ -33,7 +33,12 @@ mvn spring-boot:run
 
 * We can see that the results are synchronous with the database results as follow:
 
-![readme image](renders/Database.png "Readme Image")
+(1) The cart Item Table
+![readme image](renders/CartItemTable.png "Readme Image")
+
+
+(2) The Customer Table
+![readme image](renders/CustomerTable.png "Readme Image")
 
 * Also, the message queue rates are as follow:
 
