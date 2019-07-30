@@ -2,14 +2,15 @@ package com.springboot.project.onlineShop.amqp;
 
 import com.springboot.project.onlineShop.model.*;
 import com.springboot.project.onlineShop.service.*;
+import com.springboot.project.onlineShop.util.LogWriter;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.Message;
-import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -33,6 +34,9 @@ public class ProductMQReceiver {
     @Autowired
     private RedisService redisService;
 
+    @Value("${process-time}")
+    private int process_time;
+
     @RabbitListener(queues = "#{queue2.name}")
     public void receiveMessage(final Message message) throws JSONException {
 //        log.info("Received Message {}", message.toString());
@@ -49,7 +53,7 @@ public class ProductMQReceiver {
         }
 
         try {
-            Thread.sleep(20);
+            Thread.sleep(process_time);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

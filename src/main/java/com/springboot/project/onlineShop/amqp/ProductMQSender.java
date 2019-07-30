@@ -1,7 +1,6 @@
 package com.springboot.project.onlineShop.amqp;
 
-import com.springboot.project.onlineShop.model.Customer;
-import com.springboot.project.onlineShop.model.LogWriter;
+import com.springboot.project.onlineShop.util.LogWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.AmqpTemplate;

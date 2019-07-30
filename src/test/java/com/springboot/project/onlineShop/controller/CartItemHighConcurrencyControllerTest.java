@@ -9,14 +9,15 @@ import com.springboot.project.onlineShop.model.Customer;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 
-import com.springboot.project.onlineShop.model.LogWriter;
+import com.springboot.project.onlineShop.util.LogWriter;
 import com.springboot.project.onlineShop.model.Product;
 import com.springboot.project.onlineShop.service.CustomerService;
 import com.springboot.project.onlineShop.service.ProductService;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
@@ -34,6 +35,8 @@ import java.util.List;
 @WebAppConfiguration
 @TestPropertySource("classpath:application-test.properties")
 public class CartItemHighConcurrencyControllerTest {
+
+    private static final Logger log = LoggerFactory.getLogger(CartItemHighConcurrencyControllerTest.class);
 
     private MockMvc mockMvc;
 
@@ -53,8 +56,17 @@ public class CartItemHighConcurrencyControllerTest {
 
     private Long productId;
 
-    @Value("${test-unit-stock}")
+    @Value("${unit-stock}")
     private int stock;
+
+    @Value("${process-time}")
+    private int process_time;
+
+    @Value("${request-interval}")
+    private int request_interval;
+
+    @Value("${num_requests}")
+    private int num_requests;
 
     @Before
     public void setUp(){
@@ -68,18 +80,29 @@ public class CartItemHighConcurrencyControllerTest {
         Product product = products.get(0);
         assert(product.getUnitStock() == stock);
         productId = product.getId();
+
 //        List<Customer> customers = customerService.getAllCustomers();
     }
 
 
-    //TODO: How to test the asynchronous function???? How to set a time duration for the test.
-    // When Test is over the server is down, then the messages are stuck in the message queues
+    //Important: Need to give the server enough time to complete the requests in queue.
+    // When the test is over, the mockMVC serer would be down.
     @Test
     public void HighConcurrencyTestWhenRequestsGreaterThanUnitStock()
     {
-        //Begin Madness
-        int numRequests = 30;
-        processRequests(numRequests);
+        processRequests();
+        int time = num_requests * process_time;
+        log.info("Sleeping for {} seconds for receiver part to finish", time / 1000);
+        try{
+            Thread.sleep(time);
+        }
+        catch(InterruptedException e){
+            e.printStackTrace();
+        }
+
+        logWriter.write();
+        customerService.removeAll();
+        productService.removeAll();
     }
 
 //    @Test
@@ -92,21 +115,20 @@ public class CartItemHighConcurrencyControllerTest {
 //
 //    }
 
-    public void processRequests(int numRequests){
+    public void processRequests(){
         try {
-            for (int i = 0; i < numRequests; i++) {
+            for (int i = 0; i < num_requests; i++) {
                 Customer customer = customersUtil.getRandomCustomer();
                 Long customerId = customer.getId();
                 String path = "/madness/cart/add/"+ customerId+ "/" + productId;
                 try {
-                    Thread.sleep(100);
+                    Thread.sleep(request_interval);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 mockMvc.perform(put(path));
 
             }
-            logWriter.write();
 //            assert(logWriter.getSuccess() + logWriter.getFailure() == numRequests);
         }
         catch(Exception e){

@@ -1,4 +1,4 @@
-package com.springboot.project.onlineShop.model;
+package com.springboot.project.onlineShop.util;
 
 import org.springframework.stereotype.Component;
 
@@ -44,11 +44,13 @@ public class LogWriter {
     public void write(){
         try{
             FileWriter fw=new FileWriter(OUTPUT_PATH);
-            for (String log : logs){
-                fw.write(log + "\n");
+            for (int i=0; i < logs.size(); i++){
+                String log = logs.get(i);
+                fw.write("" + i + "." + log + "\n");
             }
             success = Collections.frequency(status,"Success");
             failure = Collections.frequency(status,"Failed");
+            fw.write("\n");
             fw.write("Success: " + success + "\n");
             fw.write("Failure: " + failure + "\n");
             fw.close();

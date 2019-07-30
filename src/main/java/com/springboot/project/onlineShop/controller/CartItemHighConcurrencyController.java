@@ -2,22 +2,16 @@ package com.springboot.project.onlineShop.controller;
 
 import com.springboot.project.onlineShop.amqp.ProductMQSender;
 import com.springboot.project.onlineShop.model.*;
-import com.springboot.project.onlineShop.repository.ProductRepository;
-import com.springboot.project.onlineShop.service.CustomerService;
 import com.springboot.project.onlineShop.service.ProductService;
 import com.springboot.project.onlineShop.service.RedisService;
-import org.aspectj.lang.annotation.After;
+import com.springboot.project.onlineShop.util.LogWriter;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequestMapping(value="/madness")
@@ -37,8 +31,13 @@ public class CartItemHighConcurrencyController  implements InitializingBean {
     private LogWriter logWriter;
 
 
-    @Value("${test-unit-stock}")
+    @Value("${unit-stock}")
     private int stock;
+
+
+    @Value("${request-interval}")
+    private int request_interal;
+
 
     @Override
     public void afterPropertiesSet() throws Exception {
