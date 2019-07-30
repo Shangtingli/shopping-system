@@ -105,8 +105,8 @@ public class CartItemHighConcurrencyControllerTest {
         logWriter.write();
 
         //====Comment These Two Lines if you want to see if database records synchronizes===
-        customerService.removeAll();
-        productService.removeAll();
+//        customerService.removeAll();
+//        productService.removeAll();
         //==================================================================================
     }
 
@@ -140,8 +140,8 @@ public class CartItemHighConcurrencyControllerTest {
         }
     }
 
-    @After
-    public void destroy(){
-        customerService.removeAll();
-    }
+//    @After
+//    public void destroy(){
+//        customerService.removeAll();
+//    }
 }

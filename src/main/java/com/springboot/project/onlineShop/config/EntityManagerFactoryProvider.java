@@ -18,7 +18,6 @@ public class EntityManagerFactoryProvider {
         entityManagerFactoryBean.setPersistenceProvider(new PersistenceProvider());
         entityManagerFactoryBean.setPackagesToScan(packagesToScan);
         entityManagerFactoryBean.setDataSource(dataSource);
-        // for JPA we use the classloader that Spring uses to avoid classloader issues
         entityManagerFactoryBean.setJpaPropertyMap(getJPAProperties(dataSource.getClass().getClassLoader()));
         entityManagerFactoryBean.setLoadTimeWeaver(new SimpleLoadTimeWeaver());
         entityManagerFactoryBean.setJpaVendorAdapter(new EclipseLinkJpaVendorAdapter());
@@ -28,10 +27,7 @@ public class EntityManagerFactoryProvider {
         return entityManagerFactoryBean;
     }
 
-    /**
-     * Set some basic properties. In our case the database schema is created (or extended) automatically. Find more
-     * properties under org.eclipse.persistence.config.PersistenceUnitProperties
-     */
+
     private static Map<String, Object> getJPAProperties(ClassLoader classLoader) {
         Map<String, Object> properties = new HashMap<>();
 
@@ -42,9 +38,6 @@ public class EntityManagerFactoryProvider {
 
         // do not cache entities locally, as this causes problems if multiple application instances are used
         properties.put(CACHE_SHARED_DEFAULT, "false");
-
-        // You can also tweak your application performance by configuring your database connection pool.
-        // http://www.eclipse.org/eclipselink/documentation/2.4/jpa/extensions/p_connection_pool.htm
         properties.put(CONNECTION_POOL_MAX, 50);
 
         return properties;

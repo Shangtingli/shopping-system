@@ -8,8 +8,8 @@ import java.util.*;
 @Component
 public class LogWriter {
 
-//    private static final String OUTPUT_PATH = "/Users/shangtingli/Desktop/log.txt";
-    private static final String OUTPUT_PATH = "renders/example_log.txt";
+    private static final String OUTPUT_PATH = "assets/logs.txt";
+//    private static final String OUTPUT_PATH = "assets/example_log.txt";
 
     private List<String> logs = new ArrayList<>();
 
@@ -18,14 +18,6 @@ public class LogWriter {
     private Map<String,Integer> cartItemCounts = new HashMap<>();
 
     private int success = -1, failure = -1;
-
-    public int getSuccess() {
-        return success;
-    }
-
-//    public int getFailure() {
-//        return failure;
-//    }
 
 
     public void insert(String str){
