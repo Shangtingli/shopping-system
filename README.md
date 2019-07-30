@@ -30,7 +30,7 @@ mvn spring-boot:run
 
 * To see an example, run **HighConcurrencyTest** in *CartItemHighConcurrencyControllerTest.java*. In this scenario, we have three customers sending requests at an average rate of 235 milliseconds, with total of 50 requests competing for 30 products, and the process time for a request is 1007 milliseconds (Just let the thread to sleep, actually could be much faster.
 
-* The log file generated from this test is <a href="https://github.com/Shangtingli/shopping-system/blob/redis/renders/example_log.txt">here </a>.
+* The log file generated from this test is <a href="https://github.com/Shangtingli/shopping-system/blob/redis/assets/example_log.txt">here </a>.
 
 * We can see that the results are synchronous with the database results as follow:
 
