@@ -23,7 +23,7 @@ public class CustomerBuilderFromMessage implements CustomerBuilder {
             JSONObject obj = new JSONObject(new String(message.getBody()));
             customer.setCustomerPhone(obj.getString("customerPhone"));
             customer.setFirstName(obj.getString("firstName"));
-            customer.setFirstName(obj.getString("lastName"));
+            customer.setLastName(obj.getString("lastName"));
 
 
             //Shipping Address
