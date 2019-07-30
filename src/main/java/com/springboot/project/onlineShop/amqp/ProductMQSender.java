@@ -26,7 +26,8 @@ public class ProductMQSender {
     private String routingkey;
 
     public void send(String[] ids) {
-        //Important: convertSendAndReceive() seems not asynchronous
+        //Important: convertSendAndReceive() seems not asynchronous.
+        // Because it terminates until the message is received.
         amqpTemplate.convertAndSend(exchange, routingkey, ids);
         logWriter.insert("Message for Customer " + ids[0] + " for " + ids[1] + " sent");
 //        return;
