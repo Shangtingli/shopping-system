@@ -13,6 +13,9 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 @Configuration
 @EnableJpaRepositories(basePackages = {"com.springboot.project.onlineShop.repository"})
@@ -32,7 +35,7 @@ public class ApplicationConfig {
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUsername("root");
         dataSource.setPassword("root");
-        dataSource.setUrl("jdbc:mysql://localhost:8889/onlineshop");
+        dataSource.setUrl("jdbc:mysql://localhost:8889/onlineshop?serverTimezone=UTC");
 
         return dataSource;
     }

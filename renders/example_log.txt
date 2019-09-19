@@ -1,107 +1,207 @@
-Event 0:  Message for Customer 31 for 14 sent
-Event 1:  Message for Customer 31 for 14 sent
-Event 2:  Message for Customer 31 for 14 sent
-Event 3:  Message for Customer 31 for 14 sent
-Event 4:  Message for Customer 31 for 14 sent
-Event 5:  Request Completed For Customer 31
-Event 6:  Message for Customer 31 for 14 sent
-Event 7:  Message for Customer 32 for 14 sent
-Event 8:  Message for Customer 32 for 14 sent
-Event 9:  Message for Customer 33 for 14 sent
-Event 10:  Request Completed For Customer 31
-Event 11:  Message for Customer 31 for 14 sent
-Event 12:  Message for Customer 33 for 14 sent
-Event 13:  Message for Customer 32 for 14 sent
-Event 14:  Message for Customer 31 for 14 sent
-Event 15:  Message for Customer 32 for 14 sent
-Event 16:  Request Completed For Customer 31
-Event 17:  Message for Customer 31 for 14 sent
-Event 18:  Message for Customer 33 for 14 sent
-Event 19:  Message for Customer 31 for 14 sent
-Event 20:  Message for Customer 33 for 14 sent
-Event 21:  Request Completed For Customer 31
-Event 22:  Message for Customer 33 for 14 sent
-Event 23:  Message for Customer 32 for 14 sent
-Event 24:  Message for Customer 33 for 14 sent
-Event 25:  Message for Customer 31 for 14 sent
-Event 26:  Request Completed For Customer 31
-Event 27:  Message for Customer 32 for 14 sent
-Event 28:  Message for Customer 31 for 14 sent
-Event 29:  Message for Customer 33 for 14 sent
-Event 30:  Message for Customer 32 for 14 sent
-Event 31:  Message for Customer 33 for 14 sent
-Event 32:  Request Completed For Customer 31
-Event 33:  Message for Customer 32 for 14 sent
-Event 34:  Message for Customer 32 for 14 sent
-Event 35:  Message for Customer 32 for 14 sent
-Event 36:  Message for Customer 33 for 14 sent
-Event 37:  Request Completed For Customer 32
-Event 38:  Message for Customer 32 for 14 sent
-Event 39:  Message for Customer 32 for 14 sent
-Event 40:  Message for Customer 32 for 14 sent
-Event 41:  Message for Customer 32 for 14 sent
-Event 42:  Request Completed For Customer 32
-Event 43:  Message for Customer 32 for 14 sent
-Event 44:  Message for Customer 33 for 14 sent
-Event 45:  Message for Customer 32 for 14 sent
-Event 46:  Message for Customer 32 for 14 sent
-Event 47:  Request Completed For Customer 33
-Event 48:  Message for Customer 32 for 14 sent
-Event 49:  Message for Customer 32 for 14 sent
-Event 50:  Message for Customer 32 for 14 sent
-Event 51:  Message for Customer 32 for 14 sent
-Event 52:  Message for Customer 33 for 14 sent
-Event 53:  Request Completed For Customer 31
-Event 54:  Message for Customer 32 for 14 sent
-Event 55:  Message for Customer 31 for 14 sent
-Event 56:  Message for Customer 33 for 14 sent
-Event 57:  Message for Customer 31 for 14 sent
-Event 58:  Request Completed For Customer 33
-Event 59:  Message for Customer 33 for 14 sent
-Event 60:  Message for Customer 32 for 14 sent
-Event 61:  Request Completed For Customer 32
-Event 62:  Request Completed For Customer 31
-Event 63:  Request Completed For Customer 32
-Event 64:  Request Completed For Customer 31
-Event 65:  Request Completed For Customer 33
-Event 66:  Request Completed For Customer 31
-Event 67:  Request Completed For Customer 33
-Event 68:  Request Completed For Customer 33
-Event 69:  Request Completed For Customer 32
-Event 70:  Request Completed For Customer 33
-Event 71:  Request Completed For Customer 31
-Event 72:  Request Completed For Customer 32
-Event 73:  Request Completed For Customer 31
-Event 74:  Request Completed For Customer 33
-Event 75:  Request Completed For Customer 32
-Event 76:  Request Completed For Customer 33
-Event 77:  Request Completed For Customer 32
-Event 78:  Request Completed For Customer 32
-Event 79:  Request Completed For Customer 32
-Event 80:  Request for 33 Not Completed
-Event 81:  Request for 32 Not Completed
-Event 82:  Request for 32 Not Completed
-Event 83:  Request for 32 Not Completed
-Event 84:  Request for 32 Not Completed
-Event 85:  Request for 32 Not Completed
-Event 86:  Request for 33 Not Completed
-Event 87:  Request for 32 Not Completed
-Event 88:  Request for 32 Not Completed
-Event 89:  Request for 32 Not Completed
-Event 90:  Request for 32 Not Completed
-Event 91:  Request for 32 Not Completed
-Event 92:  Request for 32 Not Completed
-Event 93:  Request for 33 Not Completed
-Event 94:  Request for 32 Not Completed
-Event 95:  Request for 31 Not Completed
-Event 96:  Request for 33 Not Completed
-Event 97:  Request for 31 Not Completed
-Event 98:  Request for 33 Not Completed
-Event 99:  Request for 32 Not Completed
+Event 0:  Message for Customer 12 for 4 sent
+Event 1:  pool-2-thread-1 is processing request.
+Event 2:  Message for Customer 12 for 4 sent
+Event 3:  pool-2-thread-2 is processing request.
+Event 4:  Message for Customer 12 for 4 sent
+Event 5:  pool-2-thread-3 is processing request.
+Event 6:  Message for Customer 12 for 4 sent
+Event 7:  pool-2-thread-4 is processing request.
+Event 8:  Message for Customer 10 for 4 sent
+Event 9:  pool-2-thread-5 is processing request.
+Event 10:  Request Completed For Customer 12
+Event 11:  pool-2-thread-1 finished the request
+Event 12:  Message for Customer 12 for 4 sent
+Event 13:  pool-2-thread-1 is processing request.
+Event 14:  Message for Customer 10 for 4 sent
+Event 15:  pool-2-thread-6 is processing request.
+Event 16:  Message for Customer 12 for 4 sent
+Event 17:  pool-2-thread-7 is processing request.
+Event 18:  Message for Customer 12 for 4 sent
+Event 19:  pool-2-thread-8 is processing request.
+Event 20:  Request Completed For Customer 12
+Event 21:  pool-2-thread-2 finished the request
+Event 22:  Message for Customer 11 for 4 sent
+Event 23:  pool-2-thread-2 is processing request.
+Event 24:  Message for Customer 12 for 4 sent
+Event 25:  pool-2-thread-9 is processing request.
+Event 26:  Message for Customer 11 for 4 sent
+Event 27:  pool-2-thread-10 is processing request.
+Event 28:  Message for Customer 11 for 4 sent
+Event 29:  pool-2-thread-11 is processing request.
+Event 30:  Message for Customer 12 for 4 sent
+Event 31:  pool-2-thread-12 is processing request.
+Event 32:  Request Completed For Customer 12
+Event 33:  pool-2-thread-3 finished the request
+Event 34:  Message for Customer 11 for 4 sent
+Event 35:  pool-2-thread-3 is processing request.
+Event 36:  Message for Customer 12 for 4 sent
+Event 37:  pool-2-thread-13 is processing request.
+Event 38:  Message for Customer 12 for 4 sent
+Event 39:  pool-2-thread-14 is processing request.
+Event 40:  Message for Customer 10 for 4 sent
+Event 41:  pool-2-thread-15 is processing request.
+Event 42:  Request Completed For Customer 12
+Event 43:  pool-2-thread-4 finished the request
+Event 44:  Message for Customer 11 for 4 sent
+Event 45:  pool-2-thread-4 is processing request.
+Event 46:  Message for Customer 12 for 4 sent
+Event 47:  pool-2-thread-16 is processing request.
+Event 48:  Message for Customer 12 for 4 sent
+Event 49:  pool-2-thread-17 is processing request.
+Event 50:  Message for Customer 10 for 4 sent
+Event 51:  pool-2-thread-18 is processing request.
+Event 52:  Request Completed For Customer 10
+Event 53:  pool-2-thread-5 finished the request
+Event 54:  Message for Customer 12 for 4 sent
+Event 55:  pool-2-thread-5 is processing request.
+Event 56:  Message for Customer 12 for 4 sent
+Event 57:  pool-2-thread-19 is processing request.
+Event 58:  Message for Customer 11 for 4 sent
+Event 59:  pool-2-thread-20 is processing request.
+Event 60:  Message for Customer 12 for 4 sent
+Event 61:  pool-2-thread-21 is processing request.
+Event 62:  Request Completed For Customer 12
+Event 63:  pool-2-thread-1 finished the request
+Event 64:  Message for Customer 12 for 4 sent
+Event 65:  pool-2-thread-1 is processing request.
+Event 66:  Message for Customer 10 for 4 sent
+Event 67:  pool-2-thread-22 is processing request.
+Event 68:  Message for Customer 11 for 4 sent
+Event 69:  pool-2-thread-23 is processing request.
+Event 70:  Message for Customer 12 for 4 sent
+Event 71:  pool-2-thread-24 is processing request.
+Event 72:  Message for Customer 11 for 4 sent
+Event 73:  pool-2-thread-25 is processing request.
+Event 74:  Request Completed For Customer 10
+Event 75:  pool-2-thread-6 finished the request
+Event 76:  Message for Customer 10 for 4 sent
+Event 77:  pool-2-thread-6 is processing request.
+Event 78:  Message for Customer 11 for 4 sent
+Event 79:  pool-2-thread-26 is processing request.
+Event 80:  Message for Customer 12 for 4 sent
+Event 81:  pool-2-thread-27 is processing request.
+Event 82:  Message for Customer 10 for 4 sent
+Event 83:  pool-2-thread-28 is processing request.
+Event 84:  Request Completed For Customer 12
+Event 85:  pool-2-thread-7 finished the request
+Event 86:  Message for Customer 10 for 4 sent
+Event 87:  pool-2-thread-7 is processing request.
+Event 88:  Message for Customer 12 for 4 sent
+Event 89:  pool-2-thread-29 is processing request.
+Event 90:  Message for Customer 10 for 4 sent
+Event 91:  pool-2-thread-30 is processing request.
+Event 92:  Message for Customer 10 for 4 sent
+Event 93:  pool-2-thread-31 is processing request.
+Event 94:  Request Completed For Customer 12
+Event 95:  pool-2-thread-8 finished the request
+Event 96:  Message for Customer 12 for 4 sent
+Event 97:  pool-2-thread-8 is processing request.
+Event 98:  Message for Customer 11 for 4 sent
+Event 99:  pool-2-thread-32 is processing request.
+Event 100:  Message for Customer 10 for 4 sent
+Event 101:  pool-2-thread-33 is processing request.
+Event 102:  Message for Customer 10 for 4 sent
+Event 103:  pool-2-thread-34 is processing request.
+Event 104:  Message for Customer 12 for 4 sent
+Event 105:  pool-2-thread-35 is processing request.
+Event 106:  Request Completed For Customer 11
+Event 107:  pool-2-thread-2 finished the request
+Event 108:  Message for Customer 10 for 4 sent
+Event 109:  pool-2-thread-2 is processing request.
+Event 110:  Message for Customer 11 for 4 sent
+Event 111:  pool-2-thread-36 is processing request.
+Event 112:  Message for Customer 12 for 4 sent
+Event 113:  pool-2-thread-37 is processing request.
+Event 114:  Message for Customer 10 for 4 sent
+Event 115:  pool-2-thread-38 is processing request.
+Event 116:  Request Completed For Customer 12
+Event 117:  pool-2-thread-9 finished the request
+Event 118:  Message for Customer 11 for 4 sent
+Event 119:  pool-2-thread-9 is processing request.
+Event 120:  Message for Customer 10 for 4 sent
+Event 121:  pool-2-thread-39 is processing request.
+Event 122:  Request Completed For Customer 11
+Event 123:  pool-2-thread-10 finished the request
+Event 124:  Request Completed For Customer 11
+Event 125:  pool-2-thread-11 finished the request
+Event 126:  Request Completed For Customer 12
+Event 127:  pool-2-thread-12 finished the request
+Event 128:  Request Completed For Customer 11
+Event 129:  pool-2-thread-3 finished the request
+Event 130:  Request Completed For Customer 12
+Event 131:  pool-2-thread-13 finished the request
+Event 132:  Request Completed For Customer 12
+Event 133:  pool-2-thread-14 finished the request
+Event 134:  Request Completed For Customer 10
+Event 135:  pool-2-thread-15 finished the request
+Event 136:  Request Completed For Customer 11
+Event 137:  pool-2-thread-4 finished the request
+Event 138:  Request Completed For Customer 12
+Event 139:  pool-2-thread-16 finished the request
+Event 140:  Request Completed For Customer 12
+Event 141:  pool-2-thread-17 finished the request
+Event 142:  Request Completed For Customer 10
+Event 143:  pool-2-thread-18 finished the request
+Event 144:  Request Completed For Customer 12
+Event 145:  pool-2-thread-5 finished the request
+Event 146:  Request Completed For Customer 12
+Event 147:  pool-2-thread-19 finished the request
+Event 148:  Request Completed For Customer 11
+Event 149:  pool-2-thread-20 finished the request
+Event 150:  Request Completed For Customer 12
+Event 151:  pool-2-thread-21 finished the request
+Event 152:  Request Completed For Customer 12
+Event 153:  pool-2-thread-1 finished the request
+Event 154:  Request Completed For Customer 10
+Event 155:  pool-2-thread-22 finished the request
+Event 156:  Request Completed For Customer 11
+Event 157:  pool-2-thread-23 finished the request
+Event 158:  Request Completed For Customer 12
+Event 159:  pool-2-thread-24 finished the request
+Event 160:  Request for 11 Not Completed
+Event 161:  pool-2-thread-25 finished the request
+Event 162:  Request for 10 Not Completed
+Event 163:  pool-2-thread-6 finished the request
+Event 164:  Request for 11 Not Completed
+Event 165:  pool-2-thread-26 finished the request
+Event 166:  Request for 12 Not Completed
+Event 167:  pool-2-thread-27 finished the request
+Event 168:  Request for 10 Not Completed
+Event 169:  pool-2-thread-28 finished the request
+Event 170:  Request for 10 Not Completed
+Event 171:  pool-2-thread-7 finished the request
+Event 172:  Request for 12 Not Completed
+Event 173:  pool-2-thread-29 finished the request
+Event 174:  Request for 10 Not Completed
+Event 175:  pool-2-thread-30 finished the request
+Event 176:  Request for 10 Not Completed
+Event 177:  pool-2-thread-31 finished the request
+Event 178:  Request for 12 Not Completed
+Event 179:  pool-2-thread-8 finished the request
+Event 180:  Request for 11 Not Completed
+Event 181:  pool-2-thread-32 finished the request
+Event 182:  Request for 10 Not Completed
+Event 183:  pool-2-thread-33 finished the request
+Event 184:  Request for 10 Not Completed
+Event 185:  pool-2-thread-34 finished the request
+Event 186:  Request for 12 Not Completed
+Event 187:  pool-2-thread-35 finished the request
+Event 188:  Request for 10 Not Completed
+Event 189:  pool-2-thread-2 finished the request
+Event 190:  Request for 11 Not Completed
+Event 191:  pool-2-thread-36 finished the request
+Event 192:  Request for 12 Not Completed
+Event 193:  pool-2-thread-37 finished the request
+Event 194:  Request for 10 Not Completed
+Event 195:  pool-2-thread-38 finished the request
+Event 196:  Request for 11 Not Completed
+Event 197:  pool-2-thread-9 finished the request
+Event 198:  Request for 10 Not Completed
+Event 199:  pool-2-thread-39 finished the request
 
 Success: 30
 Failure: 20
 
-Customer  33 gets : 8 products.
-Customer  31 gets : 12 products.
-Customer  32 gets : 10 products.
+Customer  11 gets : 7 products.
+Customer  12 gets : 18 products.
+Customer  10 gets : 5 products.

@@ -48,6 +48,7 @@ public class LogWriter {
 
     public void write(){
         try{
+
             FileWriter fw=new FileWriter(OUTPUT_PATH);
             for (int i=0; i < logs.size(); i++){
                 String log = logs.get(i);
